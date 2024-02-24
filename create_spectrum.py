@@ -2,6 +2,7 @@ from IsoSpecPy import IsoDistribution, IsoTotalProb
 from masserstein import Spectrum
 from analyse_spectrum import analyse_spectrum
 from collections import Counter
+from sequence import Seq
 from icecream import ic
 try:
     import tomllib
@@ -15,7 +16,7 @@ import itertools
 
 def generate_prefixes_and_suffixes(seq):
     """Split given seq to create all possible suffixes and prefixes."""
-    seqs = itertools.chain.from_iterable([(seq[:i], 'pref'), (seq[i:], 'suf')] for i in range(1, len(seq)))
+    seqs = itertools.chain.from_iterable([Seq(seq[:i], 'pref'), Seq(seq[i:], 'suf')] for i in range(1, len(seq)))
     return list(seqs)
 
 
@@ -73,7 +74,7 @@ def find_next_best_letter(seq_to_test, experimental_spectrum, aa_file='amino_aci
             reader = csv.reader(f, delimiter=';')
             return [row[1] for row in reader]
     aa_one_letter_codes = get_aa_one_letter_codes(aa_file)
-    seqs_to_test = [seq_to_test + aa for aa in aa_one_letter_codes]
+    seqs_to_test = [Seq(seq_to_test.seq + aa, seq_to_test.type) for aa in aa_one_letter_codes]
     best_letters = scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes)
     return best_letters
 
@@ -84,7 +85,7 @@ def create_spectrum():
     seq = config['fasta']
     seqs = generate_prefixes_and_suffixes(seq)
 
-    envelopes = [IsoTotalProb(0.999, fasta=seqs[s][0]) for s in range(len(seqs))]
+    envelopes = [IsoTotalProb(0.999, fasta=seqs[s].seq, formula='OH' if seqs[s].type == 'pref' else 'H') for s in range(len(seqs))]
     intensities = []
     for i in config['probs']:
         intensities.extend([i * 0.5] * 2)
@@ -104,7 +105,7 @@ def create_spectrum():
 
 def create_raw_spectrum_from_fasta(seq):
     """Create raw spectrum for given fasta string (without noise and other stuff)."""
-    spectre = IsoTotalProb(0.999, fasta=seq)
+    spectre = IsoTotalProb(0.999, fasta=seq.seq, formula='OH' if seq.type == 'pref' else 'H')
     masses_and_intensities = list(zip(spectre.masses, spectre.probs))
     masserstein_spectrum = Spectrum(confs=masses_and_intensities)
     masserstein_spectrum.normalize()
@@ -113,9 +114,9 @@ def create_raw_spectrum_from_fasta(seq):
 
 # tests
 exp_spectrum = create_spectrum()
-simulated_seq = ''
+simulated_seq = Seq('', 'pref')
 for i in range(110):
     best_letters = find_next_best_letter(simulated_seq, exp_spectrum)
     print(best_letters)
-    simulated_seq += best_letters[0][0]
-print(simulated_seq)
+    simulated_seq.seq += best_letters[0][0]
+    print(simulated_seq)

@@ -13,6 +13,6 @@ def create_aa_spectrum_objects(aa_file):
     return spectras
 
 
-def analyse_spectrum(exp_spectrum, aa_file='amino_acids.csv'):
+def analyse_spectrum(exp_spectrum, theoretical_spectra):
     exp_spectrum.normalize()
-    return estimate_proportions(exp_spectrum, create_aa_spectrum_objects(aa_file))
+    return estimate_proportions(exp_spectrum, theoretical_spectra, progress=False)

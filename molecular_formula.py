@@ -1,17 +1,14 @@
 from masserstein import Spectrum
-from collections import Counter
 
 
 class MolecularFormula:
     def __init__(self, elements_dict):
-        cnt = Counter(elements_dict)
-        self.c = cnt['C']
-        self.h = cnt['H']
-        self.n = cnt['N']
-        self.o = cnt['O']
+        self.c = elements_dict.get('C', 0)
+        self.h = elements_dict.get('H', 0)
+        self.n = elements_dict.get('N', 0)
+        self.o = elements_dict.get('O', 0)
 
     def __add__(self, other):
-        # consider using Counter() + Counter()
         updated_elements_dict = {
             'C': self.c + other.c,
             'H': self.h + other.h,

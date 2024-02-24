@@ -70,7 +70,7 @@ def find_next_best_letter(seq):
     return best_seq
 
 
-def main():
+def create_spectrum():
     config = load_config_file('config.toml')
 
     seq = config['fasta']
@@ -91,7 +91,7 @@ def main():
     # spectre.plot()
     masserstein_spectrum = Spectrum(confs=masses_and_intensities)
     add_noise(masserstein_spectrum, config['noise']['nb_of_noise_peaks'], config['noise']['noise_fraction'], config['noise']['gaussian_noise_sd'])
+    return masserstein_spectrum
 
-
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()

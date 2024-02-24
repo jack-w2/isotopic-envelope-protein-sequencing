@@ -1,5 +1,6 @@
 from IsoSpecPy import IsoDistribution, IsoTotalProb
 from masserstein import Spectrum
+from analyse_spectrum import analyse_spectrum
 try:
     import tomllib
 except ModuleNotFoundError:
@@ -54,6 +55,10 @@ def scoring_function(seq):
         return 5
     else:
         return 0
+    # scoring function idea to use analyse_spectrum
+    # spectrum_to_test = create_spectrum(seq)
+    # proportions = analyse_spectrum(spectrum_to_test, 'amino_acids.csv')['proportions']
+    # return proportions[aa_index]
 
 
 def find_next_best_letter(seq):

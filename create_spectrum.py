@@ -68,7 +68,7 @@ def main():
 
     # spectre.plot()
     masserstein_spectrum = Spectrum(confs=masses_and_intensities)
-    add_noise(masserstein_spectrum)
+    add_noise(masserstein_spectrum, config['noise']['nb_of_noise_peaks'], config['noise']['noise_fraction'], config['noise']['gaussian_noise_sd'])
 
 
 if __name__ == '__main__':

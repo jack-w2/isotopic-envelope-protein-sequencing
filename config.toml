@@ -111,3 +111,7 @@ probs = [
     0.30691947176890355,
     0.6530050435623372,
 ]
+[noise]
+nb_of_noise_peaks = 100
+noise_fraction = 0.1
+gaussian_noise_sd = 0.01

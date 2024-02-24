@@ -48,6 +48,28 @@ def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, s
     masserstein_spectrum.plot()
 
 
+def scoring_function(seq):
+    """Example scoring function for find_next_best_letter. To be implemented in the final way."""
+    if seq[-1] == 'E':
+        return 5
+    else:
+        return 0
+
+
+def find_next_best_letter(seq):
+    """For given seq find next best amino acid."""
+    aa_one_leter_codes = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
+    best_seq = ''
+    best_score = 0
+    for aa in aa_one_leter_codes:
+        test_seq = seq + aa
+        test_score = scoring_function(test_seq)
+        if test_score > best_score:
+            best_score = test_score
+            best_seq = test_seq
+    return best_seq
+
+
 def main():
     config = load_config_file('config.toml')
 

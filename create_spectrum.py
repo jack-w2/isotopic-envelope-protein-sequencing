@@ -9,11 +9,13 @@ except ModuleNotFoundError:
 
 import matplotlib.pyplot as plt
 import csv
+import itertools
 
 
 def generate_prefixes_and_suffixes(seq):
     """Split given seq to create all possible suffixes and prefixes."""
-    return [(seq[:i], seq[i:]) for i in range(1, len(seq))]
+    seqs = itertools.chain.from_iterable([(seq[:i], 'pref'), (seq[i:], 'suf')] for i in range(1, len(seq)))
+    return list(seqs)
 
 
 def scale_intensities(intensities):
@@ -83,7 +85,7 @@ def create_spectrum():
     seq = config['fasta']
     seqs = generate_prefixes_and_suffixes(seq)
 
-    envelopes = [IsoTotalProb(0.999, fasta=j) for i in seqs for j in i]
+    envelopes = [IsoTotalProb(0.999, fasta=seqs[s][0]) for s in range(len(seqs))]
     intensities = []
     for i in config['probs']:
         intensities.extend([i * 0.5] * 2)
@@ -91,9 +93,7 @@ def create_spectrum():
     intensities = scale_intensities(intensities)
 
     spectre = IsoDistribution.LinearCombination(envelopes, intensities)
-    masses_and_intensities = [(m, p) for (m, p) in zip(spectre.masses, spectre.probs)]
-    # should the above be just??
-    # masses_and_intensities = list(zip(spectre.masses, spectre.probs))
+    masses_and_intensities = list(zip(spectre.masses, spectre.probs))
 
     print(masses_and_intensities)
 

@@ -1,8 +1,11 @@
 from IsoSpecPy import IsoDistribution, IsoTotalProb
+from masserstein import Spectrum
 try:
     import tomllib
 except ModuleNotFoundError:
     import tomli as tomllib
+
+import matplotlib.pyplot as plt
 
 
 def generate_prefixes_and_suffixes(seq):
@@ -23,6 +26,28 @@ def load_config_file(config_file_path):
     return config
 
 
+def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, sd=0.01):
+    plt.figure()
+    plt.title('raw spectrum')
+    masserstein_spectrum.plot()
+    masserstein_spectrum.normalize()    # maybe not necessary
+    plt.figure()
+    plt.title('normalized spectrum')
+    masserstein_spectrum.plot()
+    masserstein_spectrum.add_chemical_noise(nb_of_noise_peaks, noise_fraction)
+    plt.figure()
+    plt.title('spectrum with chemical noise')
+    masserstein_spectrum.plot()
+    masserstein_spectrum.gaussian_smoothing()
+    plt.figure()
+    plt.title('spectrum with gaussian smoothing')
+    masserstein_spectrum.plot()
+    masserstein_spectrum.add_gaussian_noise(sd)
+    plt.figure()
+    plt.title('spectrum with gaussian noise')
+    masserstein_spectrum.plot()
+
+
 def main():
     config = load_config_file('config.toml')
 
@@ -37,9 +62,13 @@ def main():
     intensities = scale_intensities(intensities)
 
     spectre = IsoDistribution.LinearCombination(envelopes, intensities)
-    print([(m, p) for (m, p) in zip(spectre.masses, spectre.probs)])
+    masses_and_intensities = [(m, p) for (m, p) in zip(spectre.masses, spectre.probs)]
 
-    spectre.plot()
+    print(masses_and_intensities)
+
+    # spectre.plot()
+    masserstein_spectrum = Spectrum(confs=masses_and_intensities)
+    add_noise(masserstein_spectrum)
 
 
 if __name__ == '__main__':

@@ -116,25 +116,44 @@ def create_raw_spectrum_from_fasta(seq):
 
 
 # tests
+model_seq = load_config_file('config.toml')['fasta']
+
+
+# Functions for testing
+def check_if_matches_model_seq(seq, model_seq):
+    """Check if last letter from guessed seq is the same in the model_seq."""
+    return seq[-1] == model_seq[len(seq) - 1]
+
+
+def give_helping_hand(seq, model_seq):
+    """Return one next correct letter from model_seq."""
+    return model_seq[len(seq) - 1]
+
+
 exp_spectrum = create_spectrum()
 exp_spectrum.normalize(target_value=100000.0)
-#Spectrum.plot_all([exp_spectrum, create_raw_spectrum_from_fasta(Seq('MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGG', 'pref'))], cmap=['green', 'blue'])
-simulated_seq = Seq('MALW', 'pref')
+# Spectrum.plot_all([exp_spectrum, create_raw_spectrum_from_fasta(Seq('MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGG', 'pref'))], cmap=['green', 'blue'])
+simulated_seqs = [Seq('MALW', 'pref'), Seq('', 'pref')]
 for i in range(110):
-    best_letters = find_next_best_letter(simulated_seq, exp_spectrum)
-    print(best_letters)
-    # plt.figure()
-    # plt.title('result')
-    # exp_spectrum.plot(show=False, color='red')
-    # create_raw_spectrum_from_fasta(simulated_seq).plot(show=False, color='blue')
-    plt.close()
-    print("Norm:", sum([x[1] for x in exp_spectrum.confs]))
-    exp_spectrum.normalize(1000.0)
-    next_steps = [simulated_seq + letter[0] for letter in best_letters]
-    print(next_steps)
-    next_steps = list(map(create_raw_spectrum_from_fasta, next_steps))
-    Spectrum.plot_all([exp_spectrum] + next_steps, cmap=['black', 'blue', "red", "yellow"])
-    simulated_seq.seq += best_letters[0][0]
-    # plt.legend()
-    # plt.show()
-    print(simulated_seq)
+    for j, simulated_seq in enumerate(simulated_seqs):
+        print(j)
+        if simulated_seq.seq:
+            best_letters = find_next_best_letter(simulated_seq, exp_spectrum)
+            print(best_letters)
+            # plt.figure()
+            # plt.title('result')
+            # exp_spectrum.plot(show=False, color='red')
+            # create_raw_spectrum_from_fasta(simulated_seq).plot(show=False, color='blue')
+            plt.close()
+            print("Norm:", sum([x[1] for x in exp_spectrum.confs]))
+            exp_spectrum.normalize(1000.0)
+            next_steps = [simulated_seq + letter[0] for letter in best_letters]
+            print(next_steps)
+            next_steps = list(map(create_raw_spectrum_from_fasta, next_steps))
+            Spectrum.plot_all([exp_spectrum] + next_steps, cmap=['black', 'blue', "red", "yellow"])
+            simulated_seq.seq += best_letters[0][0]
+            if not check_if_matches_model_seq(simulated_seq.seq, model_seq):
+                simulated_seqs[1].seq = simulated_seq.seq[:-1] + give_helping_hand(simulated_seq.seq[:-1], model_seq)
+            # plt.legend()
+            # plt.show()
+            print(simulated_seq)

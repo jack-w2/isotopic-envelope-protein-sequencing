@@ -1,12 +1,14 @@
 from IsoSpecPy import IsoDistribution, IsoTotalProb
 from masserstein import Spectrum
 from analyse_spectrum import analyse_spectrum
+from icecream import ic
 try:
     import tomllib
 except ModuleNotFoundError:
     import tomli as tomllib
 
 import matplotlib.pyplot as plt
+import csv
 
 
 def generate_prefixes_and_suffixes(seq):
@@ -49,26 +51,26 @@ def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, s
     masserstein_spectrum.plot()
 
 
-def scoring_function(seq):
-    """Example scoring function for find_next_best_letter. To be implemented in the final way."""
-    if seq[-1] == 'E':
-        return 5
-    else:
-        return 0
-    # scoring function idea to use analyse_spectrum
-    # spectrum_to_test = create_spectrum(seq)
-    # proportions = analyse_spectrum(spectrum_to_test, 'amino_acids.csv')['proportions']
-    # return proportions[aa_index]
+def scoring_function(seq, aa_index):
+    """Scoring function idea to use analyse_spectrum"""
+    spectrum_to_test = create_raw_spectrum_from_fasta(seq)
+    proportions = analyse_spectrum(spectrum_to_test)['proportions']
+    return proportions[aa_index]
 
 
-def find_next_best_letter(seq):
+def find_next_best_letter(seq, aa_file='amino_acids.csv'):
     """For given seq find next best amino acid."""
-    aa_one_letter_codes = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
+    def get_aa_one_letter_codes(aa_file):
+        """Get amino acids one letter codes from given file."""
+        with open(aa_file, 'r') as f:
+            reader = csv.reader(f, delimiter=';')
+            return [row[1] for row in reader]
+    aa_one_letter_codes = get_aa_one_letter_codes(aa_file)
     best_seq = ''
     best_score = 0
-    for aa in aa_one_letter_codes:
+    for aa_index, aa in enumerate(aa_one_letter_codes):
         test_seq = seq + aa
-        test_score = scoring_function(test_seq)
+        test_score = scoring_function(test_seq, aa_index)
         if test_score > best_score:
             best_score = test_score
             best_seq = test_seq
@@ -90,6 +92,8 @@ def create_spectrum():
 
     spectre = IsoDistribution.LinearCombination(envelopes, intensities)
     masses_and_intensities = [(m, p) for (m, p) in zip(spectre.masses, spectre.probs)]
+    # should the above be just??
+    # masses_and_intensities = list(zip(spectre.masses, spectre.probs))
 
     print(masses_and_intensities)
 
@@ -98,5 +102,10 @@ def create_spectrum():
     add_noise(masserstein_spectrum, config['noise']['nb_of_noise_peaks'], config['noise']['noise_fraction'], config['noise']['gaussian_noise_sd'])
     return masserstein_spectrum
 
-# if __name__ == '__main__':
-#     main()
+
+def create_raw_spectrum_from_fasta(seq):
+    """Create raw spectrum for given fasta string (without noise and other stuff)."""
+    spectre = IsoTotalProb(0.999, fasta=seq)
+    masses_and_intensities = list(zip(spectre.masses, spectre.probs))
+    return Spectrum(confs=masses_and_intensities)
+

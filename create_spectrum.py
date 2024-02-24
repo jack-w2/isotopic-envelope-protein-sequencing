@@ -1,6 +1,7 @@
 from IsoSpecPy import IsoDistribution, IsoTotalProb
 from masserstein import Spectrum
 from analyse_spectrum import analyse_spectrum
+from collections import Counter
 from icecream import ic
 try:
     import tomllib
@@ -53,14 +54,18 @@ def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, s
     masserstein_spectrum.plot()
 
 
-def scoring_function(seq, aa_index):
+def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes):
     """Scoring function idea to use analyse_spectrum"""
-    spectrum_to_test = create_raw_spectrum_from_fasta(seq)
-    proportions = analyse_spectrum(spectrum_to_test)['proportions']
-    return proportions[aa_index]
+    spectra_to_test = [create_raw_spectrum_from_fasta(seq) for seq in seqs_to_test]
+    proportions = analyse_spectrum(experimental_spectrum, spectra_to_test)['proportions']
+
+    def select_n_best(n):
+        counter = Counter(dict(zip(aa_one_letter_codes, proportions)))
+        return counter.most_common(n)
+    return select_n_best(3)
 
 
-def find_next_best_letter(seq, aa_file='amino_acids.csv'):
+def find_next_best_letter(seq_to_test, experimental_spectrum, aa_file='amino_acids.csv'):
     """For given seq find next best amino acid."""
     def get_aa_one_letter_codes(aa_file):
         """Get amino acids one letter codes from given file."""
@@ -68,15 +73,9 @@ def find_next_best_letter(seq, aa_file='amino_acids.csv'):
             reader = csv.reader(f, delimiter=';')
             return [row[1] for row in reader]
     aa_one_letter_codes = get_aa_one_letter_codes(aa_file)
-    best_seq = ''
-    best_score = 0
-    for aa_index, aa in enumerate(aa_one_letter_codes):
-        test_seq = seq + aa
-        test_score = scoring_function(test_seq, aa_index)
-        if test_score > best_score:
-            best_score = test_score
-            best_seq = test_seq
-    return best_seq
+    seqs_to_test = [seq_to_test + aa for aa in aa_one_letter_codes]
+    best_letters = scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes)
+    return best_letters
 
 
 def create_spectrum():
@@ -107,5 +106,16 @@ def create_raw_spectrum_from_fasta(seq):
     """Create raw spectrum for given fasta string (without noise and other stuff)."""
     spectre = IsoTotalProb(0.999, fasta=seq)
     masses_and_intensities = list(zip(spectre.masses, spectre.probs))
-    return Spectrum(confs=masses_and_intensities)
+    masserstein_spectrum = Spectrum(confs=masses_and_intensities)
+    masserstein_spectrum.normalize()
+    return masserstein_spectrum
 
+
+# tests
+exp_spectrum = create_spectrum()
+simulated_seq = ''
+for i in range(110):
+    best_letters = find_next_best_letter(simulated_seq, exp_spectrum)
+    print(best_letters)
+    simulated_seq += best_letters[0][0]
+print(simulated_seq)

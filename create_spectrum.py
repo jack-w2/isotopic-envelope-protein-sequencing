@@ -17,7 +17,9 @@ import itertools
 def generate_prefixes_and_suffixes(seq):
     """Split given seq to create all possible suffixes and prefixes."""
     seqs = itertools.chain.from_iterable([Seq(seq[:i], 'pref'), Seq(seq[i:], 'suf')] for i in range(1, len(seq)))
-    return list(seqs)
+    ret = list(seqs)
+    print("AAAAA", ret)
+    return ret
 
 
 def scale_intensities(intensities):
@@ -34,6 +36,7 @@ def load_config_file(config_file_path):
 
 
 def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, sd=0.01):
+    return
     plt.figure()
     plt.title('raw spectrum')
     masserstein_spectrum.plot()
@@ -95,7 +98,7 @@ def create_spectrum():
     spectre = IsoDistribution.LinearCombination(envelopes, intensities)
     masses_and_intensities = list(zip(spectre.masses, spectre.probs))
 
-    print(masses_and_intensities)
+    #print(masses_and_intensities)
 
     # spectre.plot()
     masserstein_spectrum = Spectrum(confs=masses_and_intensities, label='experimental')
@@ -114,17 +117,24 @@ def create_raw_spectrum_from_fasta(seq):
 
 # tests
 exp_spectrum = create_spectrum()
-exp_spectrum.plot_all([exp_spectrum, create_raw_spectrum_from_fasta(Seq('MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGG', 'pref'))], cmap=['green', 'red'])
-simulated_seq = Seq('', 'pref')
+exp_spectrum.normalize(target_value=100000.0)
+#Spectrum.plot_all([exp_spectrum, create_raw_spectrum_from_fasta(Seq('MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGG', 'pref'))], cmap=['green', 'blue'])
+simulated_seq = Seq('MALW', 'pref')
 for i in range(110):
     best_letters = find_next_best_letter(simulated_seq, exp_spectrum)
     print(best_letters)
-    simulated_seq.seq += best_letters[0][0]
     # plt.figure()
     # plt.title('result')
     # exp_spectrum.plot(show=False, color='red')
     # create_raw_spectrum_from_fasta(simulated_seq).plot(show=False, color='blue')
-    exp_spectrum.plot_all([exp_spectrum, create_raw_spectrum_from_fasta(simulated_seq)], cmap=['green', 'red'])
+    plt.close()
+    print("Norm:", sum([x[1] for x in exp_spectrum.confs]))
+    exp_spectrum.normalize(1000.0)
+    next_steps = [simulated_seq + letter[0] for letter in best_letters]
+    print(next_steps)
+    next_steps = list(map(create_raw_spectrum_from_fasta, next_steps))
+    Spectrum.plot_all([exp_spectrum] + next_steps, cmap=['black', 'blue', "red", "yellow"])
+    simulated_seq.seq += best_letters[0][0]
     # plt.legend()
     # plt.show()
     print(simulated_seq)

@@ -98,7 +98,7 @@ def create_spectrum():
     print(masses_and_intensities)
 
     # spectre.plot()
-    masserstein_spectrum = Spectrum(confs=masses_and_intensities)
+    masserstein_spectrum = Spectrum(confs=masses_and_intensities, label='experimental')
     add_noise(masserstein_spectrum, config['noise']['nb_of_noise_peaks'], config['noise']['noise_fraction'], config['noise']['gaussian_noise_sd'])
     return masserstein_spectrum
 
@@ -107,16 +107,24 @@ def create_raw_spectrum_from_fasta(seq):
     """Create raw spectrum for given fasta string (without noise and other stuff)."""
     spectre = IsoTotalProb(0.999, fasta=seq.seq, formula='OH' if seq.type == 'pref' else 'H')
     masses_and_intensities = list(zip(spectre.masses, spectre.probs))
-    masserstein_spectrum = Spectrum(confs=masses_and_intensities)
+    masserstein_spectrum = Spectrum(confs=masses_and_intensities, label='theoretical')
     masserstein_spectrum.normalize()
     return masserstein_spectrum
 
 
 # tests
 exp_spectrum = create_spectrum()
+exp_spectrum.plot_all([exp_spectrum, create_raw_spectrum_from_fasta(Seq('MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGG', 'pref'))], cmap=['green', 'red'])
 simulated_seq = Seq('', 'pref')
 for i in range(110):
     best_letters = find_next_best_letter(simulated_seq, exp_spectrum)
     print(best_letters)
     simulated_seq.seq += best_letters[0][0]
+    # plt.figure()
+    # plt.title('result')
+    # exp_spectrum.plot(show=False, color='red')
+    # create_raw_spectrum_from_fasta(simulated_seq).plot(show=False, color='blue')
+    exp_spectrum.plot_all([exp_spectrum, create_raw_spectrum_from_fasta(simulated_seq)], cmap=['green', 'red'])
+    # plt.legend()
+    # plt.show()
     print(simulated_seq)

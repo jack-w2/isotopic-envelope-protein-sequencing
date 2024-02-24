@@ -7,13 +7,15 @@ class MolecularFormula:
         self.h = elements_dict.get('H', 0)
         self.n = elements_dict.get('N', 0)
         self.o = elements_dict.get('O', 0)
+        self.s = elements_dict.get('S', 0)
 
     def __add__(self, other):
         updated_elements_dict = {
             'C': self.c + other.c,
             'H': self.h + other.h,
             'N': self.n + other.n,
-            'O': self.o + other.o
+            'O': self.o + other.o,
+            'S': self.s + other.s
         }
         return MolecularFormula(updated_elements_dict)
 

@@ -58,10 +58,10 @@ def scoring_function(seq):
 
 def find_next_best_letter(seq):
     """For given seq find next best amino acid."""
-    aa_one_leter_codes = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
+    aa_one_letter_codes = ['A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'Y']
     best_seq = ''
     best_score = 0
-    for aa in aa_one_leter_codes:
+    for aa in aa_one_letter_codes:
         test_seq = seq + aa
         test_score = scoring_function(test_seq)
         if test_score > best_score:

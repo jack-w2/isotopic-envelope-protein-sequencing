@@ -13,6 +13,6 @@ def create_aa_spectrum_objects(aa_file):
     return spectras
 
 
-def analyse_spectrum(exp_spectrum, theoretical_spectra):
+def analyse_spectrum(exp_spectrum, theoretical_spectra, mtd, mdc, mmd, mtd_th):
     exp_spectrum.normalize()
-    return estimate_proportions(exp_spectrum, theoretical_spectra, progress=False)
+    return estimate_proportions(exp_spectrum, theoretical_spectra, MTD=mtd, MDC=mdc, MMD=mmd, MTD_th=mtd_th, progress=False)

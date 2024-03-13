@@ -5,6 +5,7 @@ from collections import Counter
 from sequence import Seq
 from icecream import ic
 from datetime import datetime
+from pathlib import Path
 try:
     import tomllib
 except ModuleNotFoundError:
@@ -137,7 +138,7 @@ mmd = [-1, 0.2, 0.4, 0.6]
 mtd_th = [None, 0.1, 0.4, 0.6]
 parameters_matrix = itertools.product(mtd, mdc, mmd, mtd_th)
 
-log_file_name = f'log_file_{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}'
+log_file_name = f'log_file_{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}.txt'
 for parameters_set in parameters_matrix:
     lines_to_file = []
     exp_spectrum = create_spectrum()
@@ -163,6 +164,7 @@ for parameters_set in parameters_matrix:
             lines_to_file.append(simulated_seq)
             break
 
+    Path('tests').mkdir(exist_ok=True)
     with open(f'tests/{log_file_name}', 'a') as log_file:
         log_file.writelines([f'{str(line)}\n' for line in lines_to_file])
         log_file.write('\n\n')

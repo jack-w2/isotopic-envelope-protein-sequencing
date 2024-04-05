@@ -29,6 +29,19 @@ class MolecularFormula:
         }
         return MolecularFormula(updated_elements_dict)
 
+    def __mul__(self, multiplier):
+        if isinstance(multiplier, int):
+            updated_elements_dict = {
+                'C': self.c * multiplier,
+                'H': self.h * multiplier,
+                'N': self.n * multiplier,
+                'O': self.o * multiplier,
+                'S': self.s * multiplier
+            }
+            return MolecularFormula(updated_elements_dict)
+        else:
+            raise TypeError("Multiplication is only allowed by integers!")
+
     def __eq__(self, other):
         conditions = [
             self.c == other.c,

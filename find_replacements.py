@@ -24,12 +24,12 @@ for aa in aa_one_letter_codes:
                 print('hurra', aa2, '+', aa3, '=', aa)
             for aa4 in aa_one_letter_codes:
                 seq_to_test = Seq(aa2, 'full') + Seq(aa3, 'full') + Seq(aa4, 'full')
-                formula_to_test = seq_to_test.convert_to_molecular_formula() - MolecularFormula({'H': 2, 'O': 1})
+                formula_to_test = seq_to_test.convert_to_molecular_formula() - MolecularFormula({'H': 2, 'O': 1}) * 2
                 if formula == formula_to_test:
                     print('hurra', aa2, '+', aa3, '+', aa4, '=', aa)
                 for aa5 in aa_one_letter_codes:
                     seq_to_test = Seq(aa2, 'full') + Seq(aa3, 'full') + Seq(aa4, 'full') + Seq(aa5, 'full')
-                    formula_to_test = seq_to_test.convert_to_molecular_formula() - MolecularFormula({'H': 2, 'O': 1})
+                    formula_to_test = seq_to_test.convert_to_molecular_formula() - MolecularFormula({'H': 2, 'O': 1}) * 3
                     if formula == formula_to_test:
                         print('hurra', aa2, '+', aa3, '+', aa4, '+', aa5, '=', aa)
 

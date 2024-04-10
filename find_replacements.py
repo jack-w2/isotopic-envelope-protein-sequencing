@@ -32,4 +32,14 @@ for aa in aa_one_letter_codes:
                     formula_to_test = seq_to_test.convert_to_molecular_formula() - MolecularFormula({'H': 2, 'O': 1}) * 3
                     if formula == formula_to_test:
                         print('hurra', aa2, '+', aa3, '+', aa4, '+', aa5, '=', aa)
+                    for aa6 in aa_one_letter_codes:
+                        seq_to_test = Seq(aa2, 'full') + Seq(aa3, 'full') + Seq(aa4, 'full') + Seq(aa5, 'full') + Seq(aa6, 'full')
+                        formula_to_test = seq_to_test.convert_to_molecular_formula() - MolecularFormula({'H': 2, 'O': 1}) * 4
+                        if formula == formula_to_test:
+                            print('hurra', aa2, '+', aa3, '+', aa4, '+', aa5, '+', aa6, '=', aa)
+                        for aa7 in aa_one_letter_codes:
+                            seq_to_test = Seq(aa2, 'full') + Seq(aa3, 'full') + Seq(aa4, 'full') + Seq(aa5, 'full') + Seq(aa6, 'full') + Seq(aa7, 'full')
+                            formula_to_test = seq_to_test.convert_to_molecular_formula() - MolecularFormula({'H': 2, 'O': 1}) * 5
+                            if formula == formula_to_test:
+                                print('hurra', aa2, '+', aa3, '+', aa4, '+', aa5, '+', aa6, '+', aa7, '=', aa)
 

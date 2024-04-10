@@ -117,6 +117,15 @@ def create_raw_spectrum_from_fasta(seq):
     return masserstein_spectrum
 
 
+def get_replacements_dict(replacements_file='amino_acids_replacements.csv'):
+    replacements_dict = {}
+    with open(replacements_file, 'r') as f:
+        reader = csv.reader(f, delimiter=';')
+        for row in reader:
+            replacements_dict[row[0]] = row[1:]
+    return replacements_dict
+
+
 # tests
 model_seq = load_config_file('config.toml')['fasta']
 
@@ -157,7 +166,16 @@ for parameters_set in parameters_matrix:
         print(next_steps)
         # next_steps = list(map(create_raw_spectrum_from_fasta, next_steps))
         # Spectrum.plot_all([exp_spectrum] + next_steps, cmap=['black', 'blue', "red", "yellow"])
-        simulated_seq.seq += best_letters[0][0]
+        replacements_dict = get_replacements_dict()
+        if best_letters[0][0] in replacements_dict.keys():
+            for letter in [l[0] for l in best_letters]:
+                if letter in replacements_dict[best_letters[0][0]]:
+                    # select letter as next letter in simulated_seq
+                    # break if letter found
+                    simulated_seq.seq += letter
+                    break
+        else:
+            simulated_seq.seq += best_letters[0][0]
         print(simulated_seq)
         if not check_if_matches_model_seq(simulated_seq.seq, model_seq):
             lines_to_file.append(best_letters)

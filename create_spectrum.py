@@ -168,12 +168,16 @@ for parameters_set in parameters_matrix:
         # Spectrum.plot_all([exp_spectrum] + next_steps, cmap=['black', 'blue', "red", "yellow"])
         replacements_dict = get_replacements_dict()
         if best_letters[0][0] in replacements_dict.keys():
-            for letter in [l[0] for l in best_letters]:
-                if letter in replacements_dict[best_letters[0][0]]:
-                    # select letter as next letter in simulated_seq
-                    # break if letter found
-                    simulated_seq.seq += letter
-                    break
+            set_to_test = set([l[0] for l in best_letters]) & set(replacements_dict[best_letters[0][0]])
+            if len(set_to_test) > 0:
+                for letter in [l[0] for l in best_letters]:
+                    if letter in replacements_dict[best_letters[0][0]]:
+                        # select letter as next letter in simulated_seq
+                        # break if letter found
+                        simulated_seq.seq += letter
+                        break
+            else:
+                simulated_seq.seq += best_letters[0][0]
         else:
             simulated_seq.seq += best_letters[0][0]
         print(simulated_seq)

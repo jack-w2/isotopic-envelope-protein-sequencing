@@ -1,0 +1,1280 @@
+Seq(MALW, pref), parameters: (0.1, 1e-07, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, -1, 0.1)
+[('G', 0.007788451091311848), ('L', 0.005467971724105023), ('A', 0.0)]
+Seq(MALWMRG, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-07, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, -1, 0.1)
+[('G', 0.007788451091311848), ('L', 0.005467971724105023), ('A', 0.0)]
+Seq(MALWMRG, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-08, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, -1, 0.1)
+[('G', 0.007788451091311848), ('L', 0.005467971724105023), ('A', 0.0)]
+Seq(MALWMRG, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-09, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, -1, 0.1)
+[('G', 0.007788451091311848), ('L', 0.005467971724105023), ('A', 0.0)]
+Seq(MALWMRG, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.1, 1e-10, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-07, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-08, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.01, 1e-10, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-07, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-08, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-09, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.001, 1e-10, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-07, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-08, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-09, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, -1, None)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, -1, 0.1)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, -1, 0.4)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, -1, 0.6)
+[('Q', 4.425344310027275e-05), ('A', -0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.2, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.2, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.2, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.2, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.4, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.4, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.4, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.4, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.6, None)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.6, 0.1)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.6, 0.4)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+
+Seq(MALW, pref), parameters: (0.0001, 1e-10, 0.6, 0.6)
+[('Q', 4.425344310027275e-05), ('A', 0.0), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPAAAFVNA, pref)
+
+

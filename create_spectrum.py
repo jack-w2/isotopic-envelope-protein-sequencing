@@ -14,13 +14,13 @@ except ModuleNotFoundError:
 import matplotlib.pyplot as plt
 import csv
 import itertools
+import multiprocessing
 
 
 def generate_prefixes_and_suffixes(seq):
     """Split given seq to create all possible suffixes and prefixes."""
     seqs = itertools.chain.from_iterable([Seq(seq[:i], 'pref'), Seq(seq[i:], 'suf')] for i in range(1, len(seq)))
     ret = list(seqs)
-    # print("AAAAA", ret)
     return ret
 
 
@@ -100,8 +100,6 @@ def create_spectrum():
     spectre = IsoDistribution.LinearCombination(envelopes, intensities)
     masses_and_intensities = list(zip(spectre.masses, spectre.probs))
 
-    #print(masses_and_intensities)
-
     # spectre.plot()
     masserstein_spectrum = Spectrum(confs=masses_and_intensities, label='experimental')
     add_noise(masserstein_spectrum, config['noise']['nb_of_noise_peaks'], config['noise']['noise_fraction'], config['noise']['gaussian_noise_sd'])
@@ -148,13 +146,13 @@ mtd_th = [None, 0.1, 0.4, 0.6]
 parameters_matrix = itertools.product(mtd, mdc, mmd, mtd_th)
 
 log_file_name = f'log_file_{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}.txt'
-for parameters_set in parameters_matrix:
-    lines_to_file = []
+
+
+def parameters_tester(parameters_set):
     exp_spectrum = create_spectrum()
     exp_spectrum.normalize(target_value=100000.0)
     simulated_seq = Seq('MALW', 'pref')
     parameters_info = f'{simulated_seq}, parameters: {parameters_set}'
-    lines_to_file.append(parameters_info)
     print(parameters_info)
     for i in range(110):
         best_letters = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
@@ -182,11 +180,13 @@ for parameters_set in parameters_matrix:
             simulated_seq.seq += best_letters[0][0]
         print(simulated_seq)
         if not check_if_matches_model_seq(simulated_seq.seq, model_seq):
-            lines_to_file.append(best_letters)
-            lines_to_file.append(simulated_seq)
-            break
+            return [parameters_info, best_letters, simulated_seq]
 
-    Path('tests').mkdir(exist_ok=True)
-    with open(f'tests/{log_file_name}', 'a') as log_file:
-        log_file.writelines([f'{str(line)}\n' for line in lines_to_file])
-        log_file.write('\n\n')
+
+with multiprocessing.Pool() as pool:
+    lines_to_file = pool.map(parameters_tester, parameters_matrix)
+
+Path('tests').mkdir(exist_ok=True)
+with open(f'tests/{log_file_name}', 'w') as log_file:
+    log_file.writelines([f'{str(line)}\n' for lines in lines_to_file for line in lines])
+    log_file.write('\n\n')

@@ -188,5 +188,4 @@ with multiprocessing.Pool() as pool:
 
 Path('tests').mkdir(exist_ok=True)
 with open(f'tests/{log_file_name}', 'w') as log_file:
-    log_file.writelines([f'{str(line)}\n' for lines in lines_to_file for line in lines])
-    log_file.write('\n\n')
+    log_file.writelines([f'{str(line)}\n' for lines in lines_to_file for line in lines+['\n']])

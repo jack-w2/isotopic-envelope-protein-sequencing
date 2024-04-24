@@ -68,7 +68,7 @@ def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, p
     def select_n_best(n):
         counter = Counter(dict(zip(aa_one_letter_codes, proportions)))
         return counter.most_common(n)
-    return select_n_best(3)
+    return select_n_best(3), dict(zip(aa_one_letter_codes, proportions))
 
 
 def find_next_best_letter(seq_to_test, experimental_spectrum, parameters_set, aa_file='amino_acids.csv'):
@@ -156,6 +156,8 @@ def parameters_tester(parameters_set):
     print(parameters_info)
     for i in range(110):
         best_letters = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
+        best_letters_all = best_letters[1]  # dictionary with all letters
+        best_letters = best_letters[0]
         print(best_letters)
         # plt.close()
         print("Norm:", sum([x[1] for x in exp_spectrum.confs]))
@@ -169,7 +171,13 @@ def parameters_tester(parameters_set):
             set_to_test = set([l[0] for l in best_letters]) & set(replacements_dict[best_letters[0][0]])
             if len(set_to_test) > 0:
                 for letter in [l[0] for l in best_letters]:
-                    if letter in replacements_dict[best_letters[0][0]]:
+                    conditions = [
+                        letter in replacements_dict[best_letters[0][0]],
+                        best_letters_all[letter] > 0.2 * best_letters_all[replacements_dict[best_letters[0][0]][0]]
+                        or
+                        best_letters_all[letter] > 0.2 * best_letters_all[replacements_dict[best_letters[0][0]][1]]
+                    ]
+                    if all(conditions):
                         # select letter as next letter in simulated_seq
                         # break if letter found
                         simulated_seq.seq += letter

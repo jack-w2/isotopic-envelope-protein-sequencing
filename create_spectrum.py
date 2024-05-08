@@ -170,18 +170,26 @@ def parameters_tester(parameters_set):
         if best_letters[0][0] in replacements_dict.keys():
             set_to_test = set([l[0] for l in best_letters]) & set(replacements_dict[best_letters[0][0]])
             if len(set_to_test) > 0:
+                found_good_replacement = False
                 for letter in [l[0] for l in best_letters]:
+                    letter_proportion = best_letters_all[letter]
+                    replacements_for_best_letter = replacements_dict[best_letters[0][0]]
+                    replacement1_proportion = best_letters_all[replacements_for_best_letter[0]]
+                    replacement2_proportion = best_letters_all[replacements_for_best_letter[1]]
                     conditions = [
                         letter in replacements_dict[best_letters[0][0]],
-                        best_letters_all[letter] > 0.2 * best_letters_all[replacements_dict[best_letters[0][0]][0]]
+                        letter_proportion > 0.2 * replacement1_proportion
                         or
-                        best_letters_all[letter] > 0.2 * best_letters_all[replacements_dict[best_letters[0][0]][1]]
+                        letter_proportion > 0.2 * replacement2_proportion
                     ]
                     if all(conditions):
                         # select letter as next letter in simulated_seq
                         # break if letter found
                         simulated_seq.seq += letter
+                        found_good_replacement = True
                         break
+                if not found_good_replacement:
+                    simulated_seq.seq += best_letters[0][0]
             else:
                 simulated_seq.seq += best_letters[0][0]
         else:

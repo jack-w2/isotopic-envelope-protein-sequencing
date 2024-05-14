@@ -69,7 +69,14 @@ def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, p
     spectra_to_test_extra_hydrogen = [create_raw_spectrum_from_fasta(seq, add_extra_hydrogen=True) for seq in seqs_to_test]
     proportions_extra_hydrogen = analyse_spectrum(experimental_spectrum, spectra_to_test_extra_hydrogen, mtd=parameters_set[0], mdc=parameters_set[1], mmd=parameters_set[2], mtd_th=parameters_set[3])['proportions']
 
-    score = [proportions_standard[proportion] / max(proportions_extra_hydrogen[proportion], proportions_hydrogen_removed[proportion])**parameters_set[4] for proportion in range(len(proportions_standard))]
+    # score = [proportions_standard[proportion] / max(proportions_extra_hydrogen[proportion], proportions_hydrogen_removed[proportion])**parameters_set[4] for proportion in range(len(proportions_standard))]
+    score = []
+    for proportion in range(len(proportions_standard)):
+        numerator = proportions_standard[proportion]
+        denominator = max(proportions_extra_hydrogen[proportion], proportions_hydrogen_removed[proportion])
+        if denominator == 0.0:
+            denominator = 1
+        score.append(numerator / denominator**parameters_set[4])
 
     def select_n_best(n):
         counter = Counter(dict(zip(aa_one_letter_codes, score)))

@@ -62,13 +62,19 @@ def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, s
 
 def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, parameters_set):
     """Scoring function idea to use analyse_spectrum"""
-    spectra_to_test = [create_raw_spectrum_from_fasta(seq) for seq in seqs_to_test]
-    proportions = analyse_spectrum(experimental_spectrum, spectra_to_test, mtd=parameters_set[0], mdc=parameters_set[1], mmd=parameters_set[2], mtd_th=parameters_set[3])['proportions']
+    spectra_to_test_hydrogen_removed = [create_raw_spectrum_from_fasta(seq, remove_one_hydrogen=True) for seq in seqs_to_test]
+    proportions_hydrogen_removed = analyse_spectrum(experimental_spectrum, spectra_to_test_hydrogen_removed, mtd=parameters_set[0], mdc=parameters_set[1], mmd=parameters_set[2], mtd_th=parameters_set[3])['proportions']
+    spectra_to_test_standard = [create_raw_spectrum_from_fasta(seq) for seq in seqs_to_test]
+    proportions_standard = analyse_spectrum(experimental_spectrum, spectra_to_test_standard, mtd=parameters_set[0], mdc=parameters_set[1], mmd=parameters_set[2], mtd_th=parameters_set[3])['proportions']
+    spectra_to_test_extra_hydrogen = [create_raw_spectrum_from_fasta(seq, add_extra_hydrogen=True) for seq in seqs_to_test]
+    proportions_extra_hydrogen = analyse_spectrum(experimental_spectrum, spectra_to_test_extra_hydrogen, mtd=parameters_set[0], mdc=parameters_set[1], mmd=parameters_set[2], mtd_th=parameters_set[3])['proportions']
+
+    score = [proportions_standard[proportion] / max(proportions_extra_hydrogen[proportion], proportions_hydrogen_removed[proportion])**parameters_set[4] for proportion in range(len(proportions_standard))]
 
     def select_n_best(n):
-        counter = Counter(dict(zip(aa_one_letter_codes, proportions)))
+        counter = Counter(dict(zip(aa_one_letter_codes, score)))
         return counter.most_common(n)
-    return select_n_best(3), dict(zip(aa_one_letter_codes, proportions))
+    return select_n_best(3), dict(zip(aa_one_letter_codes, score))
 
 
 def find_next_best_letter(seq_to_test, experimental_spectrum, parameters_set, aa_file='amino_acids.csv'):
@@ -106,9 +112,18 @@ def create_spectrum():
     return masserstein_spectrum
 
 
-def create_raw_spectrum_from_fasta(seq):
+def create_raw_spectrum_from_fasta(seq, add_extra_hydrogen=False, remove_one_hydrogen=False):
     """Create raw spectrum for given fasta string (without noise and other stuff)."""
-    spectre = IsoTotalProb(0.999, fasta=seq.seq, formula='OH' if seq.type == 'pref' else 'H')
+    if add_extra_hydrogen:
+        formula_pref = 'H2O'
+        formula_suf = 'H2'
+    elif remove_one_hydrogen:
+        formula_pref = 'O'
+        formula_suf = ''
+    else:
+        formula_pref = 'OH'
+        formula_suf = 'H'
+    spectre = IsoTotalProb(0.999, fasta=seq.seq, formula=formula_pref if seq.type == 'pref' else formula_suf)
     masses_and_intensities = list(zip(spectre.masses, spectre.probs))
     masserstein_spectrum = Spectrum(confs=masses_and_intensities, label='theoretical')
     masserstein_spectrum.normalize()
@@ -139,11 +154,12 @@ def give_helping_hand(seq, model_seq):
     return model_seq[len(seq) - 1]
 
 
-mtd = [0.1, 0.01, 0.001, 0.0001]
-mdc = [1e-7, 1e-8, 1e-9, 1e-10]
-mmd = [-1, 0.2, 0.4, 0.6]
-mtd_th = [None, 0.1, 0.4, 0.6]
-parameters_matrix = itertools.product(mtd, mdc, mmd, mtd_th)
+mtd = [0.1, 0.01, 0.001, 0.0001, 0.00001]
+mdc = [1e-6, 1e-7, 1e-8, 1e-9, 1e-10]
+mmd = [-1, 0.2, 0.4, 0.6, 0.8]
+mtd_th = [None, 0.1, 0.4, 0.6, 0.8]
+scoring_function_exponent = [0.1, 0.3, 1, 3, 10]
+parameters_matrix = itertools.product(mtd, mdc, mmd, mtd_th, scoring_function_exponent)
 
 log_file_name = f'log_file_{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}.txt'
 

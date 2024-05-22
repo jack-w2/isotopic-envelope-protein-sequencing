@@ -217,7 +217,7 @@ def parameters_tester(parameters_set):
             else:
                 simulated_seq.seq += best_letters[0][0]
         else:
-            simulated_seq.seq += best_letters[0][0] for line in lines+['\n']
+            simulated_seq.seq += best_letters[0][0]
         print(simulated_seq)
         if not check_if_matches_model_seq(simulated_seq.seq, model_seq):
             log = [parameters_info, best_letters, simulated_seq]

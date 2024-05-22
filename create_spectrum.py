@@ -169,6 +169,7 @@ scoring_function_exponent = [0.1, 0.3, 1, 3, 10]
 parameters_matrix = itertools.product(mtd, mdc, mmd, mtd_th, scoring_function_exponent)
 
 log_file_name = f'log_file_{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}.txt'
+logs_directory_name = f'logs_{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}'
 
 
 def parameters_tester(parameters_set):
@@ -216,10 +217,14 @@ def parameters_tester(parameters_set):
             else:
                 simulated_seq.seq += best_letters[0][0]
         else:
-            simulated_seq.seq += best_letters[0][0]
+            simulated_seq.seq += best_letters[0][0] for line in lines+['\n']
         print(simulated_seq)
         if not check_if_matches_model_seq(simulated_seq.seq, model_seq):
-            return [parameters_info, best_letters, simulated_seq]
+            log = [parameters_info, best_letters, simulated_seq]
+            Path(logs_directory_name).mkdir(exist_ok=True, parents=True)
+            with open(f'tests/{logs_directory_name}/{parameters_set}.txt', 'w') as log_file:
+                log_file.writelines([f'{str(line)}\n' for line in log])
+            return log
 
 
 with multiprocessing.Pool() as pool:

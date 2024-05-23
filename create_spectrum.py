@@ -221,8 +221,8 @@ def parameters_tester(parameters_set):
         print(simulated_seq)
         if not check_if_matches_model_seq(simulated_seq.seq, model_seq):
             log = [parameters_info, best_letters, simulated_seq]
-            Path(logs_directory_name).mkdir(exist_ok=True, parents=True)
-            with open(f'tests/{logs_directory_name}/{parameters_set}.txt', 'w') as log_file:
+            Path(f'tests/{logs_directory_name}').mkdir(exist_ok=True, parents=True)
+            with open(f'tests/{logs_directory_name}/{"_".join(str(p) for p in parameters_set)}.txt', 'w') as log_file:
                 log_file.writelines([f'{str(line)}\n' for line in log])
             return log
 

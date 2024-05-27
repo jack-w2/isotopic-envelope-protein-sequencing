@@ -1,0 +1,3 @@
+Seq(MALW, pref), parameters: (0.01, 1e-09, 0.6, 0.1, 3)
+[('F', 2454436869.4539695), ('A', 333042.46133804653), ('R', 0.0)]
+Seq(MALWMRLLPLLALLALWGPDPF, pref)

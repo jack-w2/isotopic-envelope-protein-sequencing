@@ -16,6 +16,9 @@ import csv
 import itertools
 import multiprocessing
 
+# import matplotlib
+# matplotlib.use('qtagg')
+
 
 def generate_prefixes_and_suffixes(seq):
     """Split given seq to create all possible suffixes and prefixes."""
@@ -38,7 +41,6 @@ def load_config_file(config_file_path):
 
 
 def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, sd=0.01):
-    return
     plt.figure()
     plt.title('raw spectrum')
     masserstein_spectrum.plot()
@@ -56,7 +58,7 @@ def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, s
     masserstein_spectrum.plot()
     masserstein_spectrum.add_gaussian_noise(sd)
     plt.figure()
-    plt.title('spectrum with gaussian noise')
+    plt.title('spectrum with electronic noise')
     masserstein_spectrum.plot()
 
 
@@ -115,7 +117,7 @@ def create_spectrum():
 
     # spectre.plot()
     masserstein_spectrum = Spectrum(confs=masses_and_intensities, label='experimental')
-    add_noise(masserstein_spectrum, config['noise']['nb_of_noise_peaks'], config['noise']['noise_fraction'], config['noise']['gaussian_noise_sd'])
+    add_noise(masserstein_spectrum, config['noise']['nb_of_chemical_noise_peaks'], config['noise']['chemical_noise_amount'], config['noise']['electronic_noise_sd'])
     return masserstein_spectrum
 
 
@@ -227,8 +229,8 @@ def parameters_tester(parameters_set):
             return log
 
 
-with multiprocessing.Pool() as pool:
-    lines_to_file = pool.map(parameters_tester, parameters_matrix)
+# with multiprocessing.Pool() as pool:
+lines_to_file = map(parameters_tester, parameters_matrix)
 
 Path('tests').mkdir(exist_ok=True)
 with open(f'tests/{log_file_name}', 'w') as log_file:

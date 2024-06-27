@@ -52,7 +52,7 @@ def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, s
     plt.figure()
     plt.title('spectrum with chemical noise')
     masserstein_spectrum.plot()
-    masserstein_spectrum.gaussian_smoothing()
+    masserstein_spectrum.gaussian_smoothing(sd=0.3)
     plt.figure()
     plt.title('spectrum with gaussian smoothing')
     masserstein_spectrum.plot()

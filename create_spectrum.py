@@ -170,6 +170,14 @@ mtd_th = [None, 0.1, 0.4, 0.6, 0.8]
 scoring_function_exponent = [0.1, 0.3, 1, 3, 10]
 parameters_matrix = itertools.product(mtd, mdc, mmd, mtd_th, scoring_function_exponent)
 
+
+def get_parameters_matrix_from_file(file_path):
+    with open(file_path, 'r') as file_text:
+        reader = csv.reader(file_text, delimiter=',')
+        return list(reader)
+
+
+parameters_matrix = get_parameters_matrix_from_file('test_file')
 log_file_name = f'log_file_{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}.txt'
 logs_directory_name = f'logs_{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}'
 

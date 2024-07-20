@@ -1,5 +1,5 @@
 from pathlib import Path
-log_file_path = Path('../tests/logs_with_noise_2024-06-18.txt')
+log_file_path = Path('../tests/good_log_file.txt')
 model_seq = 'MALWMRLLPLLALLALWGPDPAAAFVNQHLCGSHLVEALYLVCGERGFFYTPKTRREAEDLQVGQVELGGGPGAGSLQPLALEGSLQKRGLVEQCCTSLCSLYQLENYCN'
 with open(log_file_path, 'r') as log_file:
     log_text = log_file.read()
@@ -8,7 +8,7 @@ good_params = []
 for index, line in enumerate(log_lines):
     if line.startswith('Seq(') and line[-2].isalpha():
         seq = line[len('Seq('):line.index(',')]
-        if seq == model_seq or seq[:-1] == model_seq:
+        if seq == model_seq or seq[:-1] == model_seq[:-1]:
             params_line = log_lines[index - 2]
             params = params_line[params_line.index('parameters: ') + len('parameters: ') + 1:-1].replace(' ', '')
             print(params)

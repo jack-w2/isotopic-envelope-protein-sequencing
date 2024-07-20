@@ -41,25 +41,25 @@ def load_config_file(config_file_path):
 
 
 def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, sd=0.01):
-    plt.figure()
-    plt.title('raw spectrum')
-    masserstein_spectrum.plot()
+    # plt.figure()
+    # plt.title('raw spectrum')
+    # masserstein_spectrum.plot()
     masserstein_spectrum.normalize()    # maybe not necessary
-    plt.figure()
-    plt.title('normalized spectrum')
-    masserstein_spectrum.plot()
+    # plt.figure()
+    # plt.title('normalized spectrum')
+    # masserstein_spectrum.plot()
     masserstein_spectrum.add_chemical_noise(nb_of_noise_peaks, noise_fraction)
-    plt.figure()
-    plt.title('spectrum with chemical noise')
-    masserstein_spectrum.plot()
+    # plt.figure()
+    # plt.title('spectrum with chemical noise')
+    # masserstein_spectrum.plot()
     masserstein_spectrum.gaussian_smoothing(sd=0.3)
-    plt.figure()
-    plt.title('spectrum with gaussian smoothing')
-    masserstein_spectrum.plot()
+    # plt.figure()
+    # plt.title('spectrum with gaussian smoothing')
+    # masserstein_spectrum.plot()
     masserstein_spectrum.add_gaussian_noise(sd)
-    plt.figure()
-    plt.title('spectrum with electronic noise')
-    masserstein_spectrum.plot()
+    # plt.figure()
+    # plt.title('spectrum with electronic noise')
+    # masserstein_spectrum.plot()
 
 
 def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, parameters_set):
@@ -174,10 +174,10 @@ parameters_matrix = itertools.product(mtd, mdc, mmd, mtd_th, scoring_function_ex
 def get_parameters_matrix_from_file(file_path):
     with open(file_path, 'r') as file_text:
         reader = csv.reader(file_text, delimiter=',')
-        return list(reader)
+        return [list(map(float, row)) for row in reader]
 
 
-parameters_matrix = get_parameters_matrix_from_file('test_file')
+# parameters_matrix = get_parameters_matrix_from_file('tests/good_params_good_log_file.txt')
 log_file_name = f'log_file_{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}.txt'
 logs_directory_name = f'logs_{datetime.now().strftime("%d-%m-%Y-%H-%M-%S")}'
 
@@ -237,8 +237,8 @@ def parameters_tester(parameters_set):
             return log
 
 
-# with multiprocessing.Pool() as pool:
-lines_to_file = map(parameters_tester, parameters_matrix)
+with multiprocessing.Pool() as pool:
+    lines_to_file = pool.map(parameters_tester, parameters_matrix)
 
 Path('tests').mkdir(exist_ok=True)
 with open(f'tests/{log_file_name}', 'w') as log_file:

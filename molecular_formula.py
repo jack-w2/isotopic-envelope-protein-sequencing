@@ -19,6 +19,39 @@ class MolecularFormula:
         }
         return MolecularFormula(updated_elements_dict)
 
+    def __sub__(self, other):
+        updated_elements_dict = {
+            'C': self.c - other.c,
+            'H': self.h - other.h,
+            'N': self.n - other.n,
+            'O': self.o - other.o,
+            'S': self.s - other.s
+        }
+        return MolecularFormula(updated_elements_dict)
+
+    def __mul__(self, multiplier):
+        if isinstance(multiplier, int):
+            updated_elements_dict = {
+                'C': self.c * multiplier,
+                'H': self.h * multiplier,
+                'N': self.n * multiplier,
+                'O': self.o * multiplier,
+                'S': self.s * multiplier
+            }
+            return MolecularFormula(updated_elements_dict)
+        else:
+            raise TypeError("Multiplication is only allowed by integers!")
+
+    def __eq__(self, other):
+        conditions = [
+            self.c == other.c,
+            self.h == other.h,
+            self.n == other.n,
+            self.o == other.o,
+            self.s == other.s
+        ]
+        return all(conditions)
+
     def __str__(self):
         s = ''
         for element, amount in self.__dict__.items():
@@ -28,8 +61,3 @@ class MolecularFormula:
 
     def generate_spectrum(self):
         Spectrum(str(self)).plot()
-
-
-# tests
-formula1 = MolecularFormula({'C': 2, 'H': 6, 'O': 1})
-print(formula1)

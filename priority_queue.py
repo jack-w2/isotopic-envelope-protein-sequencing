@@ -2,9 +2,12 @@ import heapq
 
 
 class QueueItem:
-    def __init__(self, name, priority):
+    def __init__(self, name, priority, initial_seq, result_seq, best_letters):
         self.name = name
         self._priority = priority
+        self.initial_seq = initial_seq
+        self.result_seq = result_seq
+        self.best_letters = best_letters
         self.queue = None
 
     @property

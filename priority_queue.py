@@ -6,19 +6,10 @@ class QueueItem:
         self._priority = priority
         self.seq = seq
         self.molecular_formula = molecular_formula
-        self.queue = None
 
     @property
     def priority(self):
         return self._priority
-
-    @priority.setter
-    def priority(self, priority):
-        self._priority = priority
-        self.queue.prioritize_queue()
-
-    def set_queue(self, queue):
-        self.queue = queue
 
     def __int__(self):
         return self.priority
@@ -32,13 +23,20 @@ class QueueItem:
     def __repr__(self):
         return str(self)
 
+    def __hash__(self):
+        return hash(self.molecular_formula)
+
+    def __eq__(self, other):
+        return self.molecular_formula == other.molecular_formula
+
 
 class Queue:
     def __init__(self):
         self.queue = []
+        self.visited = set()
 
     def enqueue(self, item: QueueItem):
-        heapq.heappush(self.queue, item)
+        heapq.heappush(self.queue, (item.priority, item))
         item.set_queue(self)
         return self
 
@@ -46,7 +44,11 @@ class Queue:
         heapq.heapify(self.queue)
 
     def dequeue(self):
-        return heapq.heappop(self.queue)
+        ret = heapq.heappop(self.queue)[1]
+        while ret in self.visited:
+            ret = heapq.heappop(self.queue)[1]
+        self.visited.add(ret)
+        return ret
 
     def __iter__(self):
         return iter(self.queue)

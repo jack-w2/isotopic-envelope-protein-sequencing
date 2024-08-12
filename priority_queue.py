@@ -2,12 +2,10 @@ import heapq
 
 
 class QueueItem:
-    def __init__(self, name, priority, initial_seq, result_seq, best_letters):
-        self.name = name
+    def __init__(self, priority, seq, molecular_formula):
         self._priority = priority
-        self.initial_seq = initial_seq
-        self.result_seq = result_seq
-        self.best_letters = best_letters
+        self.seq = seq
+        self.molecular_formula = molecular_formula
         self.queue = None
 
     @property
@@ -29,7 +27,7 @@ class QueueItem:
         return self._priority < other.priority
 
     def __str__(self):
-        return self.name
+        return f'QueueItem({self.priority}, {self.seq}, {self.molecular_formula}'
 
     def __repr__(self):
         return str(self)

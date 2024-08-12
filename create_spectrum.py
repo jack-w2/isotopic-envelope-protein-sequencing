@@ -3,6 +3,7 @@ from masserstein import Spectrum
 from analyse_spectrum import analyse_spectrum
 from collections import Counter
 from sequence import Seq
+from priority_queue import Queue, QueueItem
 from icecream import ic
 try:
     import tomllib
@@ -92,9 +93,7 @@ def find_next_best_letter(seq_to_test, experimental_spectrum, parameters_set, aa
     return best_letters
 
 
-def create_spectrum():
-    config = load_config_file('config.toml')
-
+def create_spectrum(config):
     seq = config['fasta']
     seqs = generate_prefixes_and_suffixes(seq)
 
@@ -142,13 +141,17 @@ def get_replacements_dict(replacements_file='amino_acids_replacements.csv'):
 
 
 # tests
-exp_spectrum = create_spectrum()
+config = load_config_file('config.toml')
+exp_spectrum = create_spectrum(config)
 exp_spectrum.normalize(target_value=100000.0)
 simulated_seq = Seq('MALW', 'pref')
 parameters_set = [0.1, 1e-06, 0.4, 0.4, 0.3]
 parameters_info = f'{simulated_seq}, parameters: {parameters_set}'
 print(parameters_info)
+q = Queue()
+checked_formulas = set()
 for i in range(110):
+    print(q)
     best_letters = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
     best_letters_all = best_letters[1]  # dictionary with all letters
     best_letters = best_letters[0]
@@ -186,4 +189,11 @@ for i in range(110):
             simulated_seq.seq += best_letters[0][0]
     else:
         simulated_seq.seq += best_letters[0][0]
+    alpha = config['heuristic_factor']
+    proportion = best_letters_all[simulated_seq.seq[-1]]
+    formula_string = str(Seq(config['fasta'], 'full').convert_to_molecular_formula())
+    simulated_seq_formula_string = str(simulated_seq.convert_to_molecular_formula())
+    heuristic = int(formula_string[1:formula_string.index('H')]) - int(simulated_seq_formula_string[1:simulated_seq_formula_string.index('H')])
+    priority = alpha * proportion + (1 - alpha) * heuristic
+    q.enqueue(QueueItem(priority, simulated_seq, simulated_seq_formula_string))
     print(simulated_seq)

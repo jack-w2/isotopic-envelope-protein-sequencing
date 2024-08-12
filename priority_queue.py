@@ -6,6 +6,7 @@ class QueueItem:
         self._priority = priority
         self.seq = seq
         self.molecular_formula = molecular_formula
+        self.queue = None
 
     @property
     def priority(self):

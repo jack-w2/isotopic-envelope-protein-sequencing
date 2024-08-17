@@ -18,7 +18,7 @@ class QueueItem:
         return self._priority < other.priority
 
     def __str__(self):
-        return f'QueueItem({self.priority}, {self.seq}, {self.molecular_formula}'
+        return f'QueueItem({self.priority}, {self.seq}, {self.molecular_formula})'
 
     def __repr__(self):
         return str(self)
@@ -37,16 +37,12 @@ class Queue:
 
     def enqueue(self, item: QueueItem):
         heapq.heappush(self.queue, (item.priority, item))
-        item.set_queue(self)
         return self
 
-    def prioritize_queue(self):
-        heapq.heapify(self.queue)
-
     def dequeue(self):
-        ret = heapq.heappop(self.queue)[1]
+        ret = heapq.heappop(self.queue)
         while ret in self.visited:
-            ret = heapq.heappop(self.queue)[1]
+            ret = heapq.heappop(self.queue)
         self.visited.add(ret)
         return ret
 

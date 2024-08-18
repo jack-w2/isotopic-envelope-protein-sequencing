@@ -140,6 +140,20 @@ def get_replacements_dict(replacements_file='amino_acids_replacements.csv'):
     return replacements_dict
 
 
+def calculate_priority(simulated_seq, config, best_letters_all):
+    """
+    Calculate priority for priority queue item. Similar to A* algorithm function.
+    Uses alpha factor defined in the config file to balance the proportion of each component.
+    """
+    alpha = config['heuristic_factor']
+    proportion = best_letters_all[simulated_seq.seq[-1]]
+    formula_string = str(Seq(config['fasta'], 'full').convert_to_molecular_formula())
+    simulated_seq_formula_string = str(simulated_seq.convert_to_molecular_formula())
+    heuristic = int(formula_string[1:formula_string.index('H')]) - int(simulated_seq_formula_string[1:simulated_seq_formula_string.index('H')])
+    priority = alpha * proportion + (1 - alpha) * heuristic
+    return priority, simulated_seq_formula_string
+
+
 # tests
 config = load_config_file('config.toml')
 exp_spectrum = create_spectrum(config)
@@ -189,11 +203,6 @@ for i in range(110):
             simulated_seq.seq += best_letters[0][0]
     else:
         simulated_seq.seq += best_letters[0][0]
-    alpha = config['heuristic_factor']
-    proportion = best_letters_all[simulated_seq.seq[-1]]
-    formula_string = str(Seq(config['fasta'], 'full').convert_to_molecular_formula())
-    simulated_seq_formula_string = str(simulated_seq.convert_to_molecular_formula())
-    heuristic = int(formula_string[1:formula_string.index('H')]) - int(simulated_seq_formula_string[1:simulated_seq_formula_string.index('H')])
-    priority = alpha * proportion + (1 - alpha) * heuristic
+    priority, simulated_seq_formula_string = calculate_priority(simulated_seq, config, best_letters_all)
     q.enqueue(QueueItem(priority, simulated_seq, simulated_seq_formula_string))
     print(simulated_seq)

@@ -1,7 +1,6 @@
 from IsoSpecPy import IsoDistribution, IsoTotalProb
 from masserstein import Spectrum
 from analyse_spectrum import analyse_spectrum
-from collections import Counter
 from sequence import Seq
 from priority_queue import Queue, QueueItem
 from icecream import ic
@@ -74,10 +73,10 @@ def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, p
             denominator = 1
         score.append(numerator / denominator**parameters_set[4])
 
-    def select_n_best(n):
-        counter = Counter(dict(zip(aa_one_letter_codes, score)))
-        return counter.most_common(n)
-    return select_n_best(3), dict(zip(aa_one_letter_codes, score))
+    best_letters_all = dict(zip(aa_one_letter_codes, score))
+    max_proportion = max(best_letters_all.values())
+    best_letters = [k for k,v in best_letters_all.items() if v > 0.5 * max_proportion]
+    return best_letters, best_letters_all
 
 
 def find_next_best_letter(seq_to_test, experimental_spectrum, parameters_set, aa_file='amino_acids.csv'):
@@ -167,47 +166,49 @@ def main():
     print(parameters_info)
     q = Queue()
     for i in range(110):
-        print(q)
-        best_letters = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
-        best_letters_all = best_letters[1]  # dictionary with all letters
-        best_letters = best_letters[0]
-        print(best_letters)
+        print('queue:', q)
+        if q:
+            simulated_seq = q.dequeue().seq
+            print('simulated_seq:', simulated_seq)
+        best_letters, best_letters_all = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
+        print('best_letters:', best_letters)
         exp_spectrum.normalize(1000.0)
-        next_steps = [simulated_seq + letter[0] for letter in best_letters]
-        print(next_steps)
+        # next_steps = [simulated_seq + letter[0] for letter in best_letters]
+        # print(next_steps)
         # next_steps = list(map(create_raw_spectrum_from_fasta, next_steps))
         # Spectrum.plot_all([exp_spectrum] + next_steps, cmap=['black', 'blue', "red", "yellow"])
         replacements_dict = get_replacements_dict()
-        if best_letters[0][0] in replacements_dict.keys():
-            set_to_test = set([l[0] for l in best_letters]) & set(replacements_dict[best_letters[0][0]])
-            if len(set_to_test) > 0:
-                found_good_replacement = False
-                for letter in [l[0] for l in best_letters]:
-                    letter_proportion = best_letters_all[letter]
-                    replacements_for_best_letter = replacements_dict[best_letters[0][0]]
-                    replacement1_proportion = best_letters_all[replacements_for_best_letter[0]]
-                    replacement2_proportion = best_letters_all[replacements_for_best_letter[1]]
-                    conditions = [
-                        letter in replacements_dict[best_letters[0][0]],
-                        letter_proportion > 0.2 * replacement1_proportion
-                        or
-                        letter_proportion > 0.2 * replacement2_proportion
-                    ]
-                    if all(conditions):
-                        # select letter as next letter in simulated_seq
-                        # break if letter found
-                        simulated_seq.seq += letter
-                        found_good_replacement = True
-                        break
-                if not found_good_replacement:
-                    simulated_seq.seq += best_letters[0][0]
+        for letter in best_letters:
+            possible_simulated_seq = Seq('', simulated_seq.type)
+            if letter in replacements_dict.keys():
+                set_to_test = set(best_letters) & set(replacements_dict[letter])
+                if len(set_to_test) > 0:
+                    found_good_replacement = False
+                    for letter2 in best_letters:
+                        letter_proportion = best_letters_all[letter2]
+                        replacements_for_best_letter = replacements_dict[letter]
+                        replacement1_proportion = best_letters_all[replacements_for_best_letter[0]]
+                        replacement2_proportion = best_letters_all[replacements_for_best_letter[1]]
+                        conditions = [
+                            letter2 in replacements_dict[letter],
+                            letter_proportion > 0.2 * replacement1_proportion
+                            or
+                            letter_proportion > 0.2 * replacement2_proportion
+                        ]
+                        if all(conditions):
+                            # select letter2 as next letter in simulated_seq
+                            # break if letter found
+                            possible_simulated_seq.seq = simulated_seq.seq + letter2
+                            found_good_replacement = True
+                            break
+                    if not found_good_replacement:
+                        possible_simulated_seq.seq = simulated_seq.seq + letter
+                else:
+                    possible_simulated_seq.seq = simulated_seq.seq + letter
             else:
-                simulated_seq.seq += best_letters[0][0]
-        else:
-            simulated_seq.seq += best_letters[0][0]
-        priority, simulated_seq_formula_string = calculate_priority(simulated_seq, config, best_letters_all)
-        q.enqueue(QueueItem(priority, simulated_seq, simulated_seq_formula_string))
-        print(simulated_seq)
+                possible_simulated_seq.seq = simulated_seq.seq + letter
+            priority, simulated_seq_formula_string = calculate_priority(possible_simulated_seq, config, best_letters_all)
+            q.enqueue(QueueItem(priority, possible_simulated_seq, simulated_seq_formula_string))
 
 if __name__ == "__main__":
     main()

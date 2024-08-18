@@ -6,7 +6,6 @@ class QueueItem:
         self._priority = priority
         self.seq = seq
         self.molecular_formula = molecular_formula
-        self.queue = None
 
     @property
     def priority(self):
@@ -41,9 +40,9 @@ class Queue:
         return self
 
     def dequeue(self):
-        ret = heapq.heappop(self.queue)
+        ret = heapq.heappop(self.queue)[1]
         while ret in self.visited:
-            ret = heapq.heappop(self.queue)
+            ret = heapq.heappop(self.queue)[1]
         self.visited.add(ret)
         return ret
 

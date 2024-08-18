@@ -35,6 +35,7 @@ def load_config_file(config_file_path):
 
 
 def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, sd=0.01):
+    """Add chemical and electronic noise to the given spectrum. Works in place."""
     # plt.figure()
     # plt.title('raw spectrum')
     # masserstein_spectrum.plot()
@@ -57,7 +58,7 @@ def add_noise(masserstein_spectrum, nb_of_noise_peaks=100, noise_fraction=0.1, s
 
 
 def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, parameters_set):
-    """Scoring function idea to use analyse_spectrum"""
+    """Scoring function for the analyse_spectrum function."""
     spectra_to_test_hydrogen_removed = [create_raw_spectrum_from_fasta(seq, remove_one_hydrogen=True) for seq in seqs_to_test]
     proportions_hydrogen_removed = analyse_spectrum(experimental_spectrum, spectra_to_test_hydrogen_removed, mtd=parameters_set[0], mdc=parameters_set[1], mmd=parameters_set[2], mtd_th=parameters_set[3])['proportions']
     spectra_to_test_standard = [create_raw_spectrum_from_fasta(seq) for seq in seqs_to_test]
@@ -65,7 +66,6 @@ def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, p
     spectra_to_test_extra_hydrogen = [create_raw_spectrum_from_fasta(seq, add_extra_hydrogen=True) for seq in seqs_to_test]
     proportions_extra_hydrogen = analyse_spectrum(experimental_spectrum, spectra_to_test_extra_hydrogen, mtd=parameters_set[0], mdc=parameters_set[1], mmd=parameters_set[2], mtd_th=parameters_set[3])['proportions']
 
-    # score = [proportions_standard[proportion] / max(proportions_extra_hydrogen[proportion], proportions_hydrogen_removed[proportion])**parameters_set[4] for proportion in range(len(proportions_standard))]
     score = []
     for proportion in range(len(proportions_standard)):
         numerator = proportions_standard[proportion]
@@ -94,6 +94,8 @@ def find_next_best_letter(seq_to_test, experimental_spectrum, parameters_set, aa
 
 
 def create_spectrum(config):
+    """Create experimental spectrum."""
+    config = load_config_file('config.toml')
     seq = config['fasta']
     seqs = generate_prefixes_and_suffixes(seq)
 
@@ -132,6 +134,7 @@ def create_raw_spectrum_from_fasta(seq, add_extra_hydrogen=False, remove_one_hyd
 
 
 def get_replacements_dict(replacements_file='amino_acids_replacements.csv'):
+    """Prepare the amino acids replacements dictionary (some amino acids can "sum" to a different amino acid)."""
     replacements_dict = {}
     with open(replacements_file, 'r') as f:
         reader = csv.reader(f, delimiter=';')
@@ -154,55 +157,57 @@ def calculate_priority(simulated_seq, config, best_letters_all):
     return priority, simulated_seq_formula_string
 
 
-# tests
-config = load_config_file('config.toml')
-exp_spectrum = create_spectrum(config)
-exp_spectrum.normalize(target_value=100000.0)
-simulated_seq = Seq('MALW', 'pref')
-parameters_set = [0.1, 1e-06, 0.4, 0.4, 0.3]
-parameters_info = f'{simulated_seq}, parameters: {parameters_set}'
-print(parameters_info)
-q = Queue()
-checked_formulas = set()
-for i in range(110):
-    print(q)
-    best_letters = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
-    best_letters_all = best_letters[1]  # dictionary with all letters
-    best_letters = best_letters[0]
-    print(best_letters)
-    exp_spectrum.normalize(1000.0)
-    next_steps = [simulated_seq + letter[0] for letter in best_letters]
-    print(next_steps)
-    # next_steps = list(map(create_raw_spectrum_from_fasta, next_steps))
-    # Spectrum.plot_all([exp_spectrum] + next_steps, cmap=['black', 'blue', "red", "yellow"])
-    replacements_dict = get_replacements_dict()
-    if best_letters[0][0] in replacements_dict.keys():
-        set_to_test = set([l[0] for l in best_letters]) & set(replacements_dict[best_letters[0][0]])
-        if len(set_to_test) > 0:
-            found_good_replacement = False
-            for letter in [l[0] for l in best_letters]:
-                letter_proportion = best_letters_all[letter]
-                replacements_for_best_letter = replacements_dict[best_letters[0][0]]
-                replacement1_proportion = best_letters_all[replacements_for_best_letter[0]]
-                replacement2_proportion = best_letters_all[replacements_for_best_letter[1]]
-                conditions = [
-                    letter in replacements_dict[best_letters[0][0]],
-                    letter_proportion > 0.2 * replacement1_proportion
-                    or
-                    letter_proportion > 0.2 * replacement2_proportion
-                ]
-                if all(conditions):
-                    # select letter as next letter in simulated_seq
-                    # break if letter found
-                    simulated_seq.seq += letter
-                    found_good_replacement = True
-                    break
-            if not found_good_replacement:
+def main():
+    config = load_config_file('config.toml')
+    exp_spectrum = create_spectrum(config)
+    exp_spectrum.normalize(target_value=100000.0)
+    simulated_seq = Seq('MALW', 'pref')
+    parameters_set = [0.1, 1e-06, 0.4, 0.4, 0.3]
+    parameters_info = f'{simulated_seq}, parameters: {parameters_set}'
+    print(parameters_info)
+    q = Queue()
+    for i in range(110):
+        print(q)
+        best_letters = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
+        best_letters_all = best_letters[1]  # dictionary with all letters
+        best_letters = best_letters[0]
+        print(best_letters)
+        exp_spectrum.normalize(1000.0)
+        next_steps = [simulated_seq + letter[0] for letter in best_letters]
+        print(next_steps)
+        # next_steps = list(map(create_raw_spectrum_from_fasta, next_steps))
+        # Spectrum.plot_all([exp_spectrum] + next_steps, cmap=['black', 'blue', "red", "yellow"])
+        replacements_dict = get_replacements_dict()
+        if best_letters[0][0] in replacements_dict.keys():
+            set_to_test = set([l[0] for l in best_letters]) & set(replacements_dict[best_letters[0][0]])
+            if len(set_to_test) > 0:
+                found_good_replacement = False
+                for letter in [l[0] for l in best_letters]:
+                    letter_proportion = best_letters_all[letter]
+                    replacements_for_best_letter = replacements_dict[best_letters[0][0]]
+                    replacement1_proportion = best_letters_all[replacements_for_best_letter[0]]
+                    replacement2_proportion = best_letters_all[replacements_for_best_letter[1]]
+                    conditions = [
+                        letter in replacements_dict[best_letters[0][0]],
+                        letter_proportion > 0.2 * replacement1_proportion
+                        or
+                        letter_proportion > 0.2 * replacement2_proportion
+                    ]
+                    if all(conditions):
+                        # select letter as next letter in simulated_seq
+                        # break if letter found
+                        simulated_seq.seq += letter
+                        found_good_replacement = True
+                        break
+                if not found_good_replacement:
+                    simulated_seq.seq += best_letters[0][0]
+            else:
                 simulated_seq.seq += best_letters[0][0]
         else:
             simulated_seq.seq += best_letters[0][0]
-    else:
-        simulated_seq.seq += best_letters[0][0]
-    priority, simulated_seq_formula_string = calculate_priority(simulated_seq, config, best_letters_all)
-    q.enqueue(QueueItem(priority, simulated_seq, simulated_seq_formula_string))
-    print(simulated_seq)
+        priority, simulated_seq_formula_string = calculate_priority(simulated_seq, config, best_letters_all)
+        q.enqueue(QueueItem(priority, simulated_seq, simulated_seq_formula_string))
+        print(simulated_seq)
+
+if __name__ == "__main__":
+    main()

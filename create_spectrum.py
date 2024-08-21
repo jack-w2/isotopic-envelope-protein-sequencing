@@ -142,18 +142,18 @@ def get_replacements_dict(replacements_file='amino_acids_replacements.csv'):
     return replacements_dict
 
 
-def calculate_priority(simulated_seq, config, best_letters_all):
+def calculate_priority(simulated_seq, config, best_letters_all, cost_so_far):
     """
     Calculate priority for priority queue item. Similar to A* algorithm function.
     Uses alpha factor defined in the config file to balance the proportion of each component.
     """
     alpha = config['heuristic_factor']
-    proportion = best_letters_all[simulated_seq.seq[-1]]
+    proportion = best_letters_all[simulated_seq.seq[-1]] + cost_so_far
     formula_string = str(Seq(config['fasta'], 'full').convert_to_molecular_formula())
     simulated_seq_formula_string = str(simulated_seq.convert_to_molecular_formula())
     heuristic = int(formula_string[1:formula_string.index('H')]) - int(simulated_seq_formula_string[1:simulated_seq_formula_string.index('H')])
     priority = alpha * proportion + (1 - alpha) * heuristic
-    return priority, simulated_seq_formula_string
+    return priority, simulated_seq_formula_string, proportion
 
 
 def main():
@@ -161,6 +161,7 @@ def main():
     exp_spectrum = create_spectrum(config)
     exp_spectrum.normalize(target_value=100000.0)
     simulated_seq = Seq('MALW', 'pref')
+    cost_so_far = 0
     parameters_set = [0.1, 1e-06, 0.4, 0.4, 0.3]
     parameters_info = f'{simulated_seq}, parameters: {parameters_set}'
     print(parameters_info)
@@ -168,8 +169,10 @@ def main():
     for i in range(110):
         print('queue:', q)
         if q:
-            simulated_seq = q.dequeue().seq
+            considered_state = q.dequeue()
+            simulated_seq = considered_state.seq
             print('simulated_seq:', simulated_seq)
+            cost_so_far = considered_state.cost_so_far
         best_letters, best_letters_all = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
         print('best_letters:', best_letters)
         exp_spectrum.normalize(1000.0)
@@ -207,8 +210,9 @@ def main():
                     possible_simulated_seq.seq = simulated_seq.seq + letter
             else:
                 possible_simulated_seq.seq = simulated_seq.seq + letter
-            priority, simulated_seq_formula_string = calculate_priority(possible_simulated_seq, config, best_letters_all)
-            q.enqueue(QueueItem(priority, possible_simulated_seq, simulated_seq_formula_string))
+            priority, simulated_seq_formula_string, cost_so_far = calculate_priority(possible_simulated_seq, config, best_letters_all, cost_so_far)
+            q.enqueue(QueueItem(cost_so_far + priority, possible_simulated_seq, simulated_seq_formula_string, cost_so_far))
+
 
 if __name__ == "__main__":
     main()

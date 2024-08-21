@@ -2,10 +2,11 @@ import heapq
 
 
 class QueueItem:
-    def __init__(self, priority, seq, molecular_formula):
+    def __init__(self, priority, seq, molecular_formula, cost_so_far):
         self._priority = priority
         self.seq = seq
         self.molecular_formula = molecular_formula
+        self.cost_so_far = cost_so_far
 
     @property
     def priority(self):
@@ -18,7 +19,7 @@ class QueueItem:
         return self._priority < other.priority
 
     def __str__(self):
-        return f'QueueItem({self.priority}, {self.seq}, {self.molecular_formula})'
+        return f'QueueItem({self.priority}, {self.seq}, {self.molecular_formula}, {self.cost_so_far})'
 
     def __repr__(self):
         return str(self)

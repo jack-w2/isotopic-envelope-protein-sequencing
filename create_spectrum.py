@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 import csv
 import itertools
 
+log_file = open('parameters.txt', 'w')
+
 
 def generate_prefixes_and_suffixes(seq):
     """Split given seq to create all possible suffixes and prefixes."""
@@ -69,9 +71,13 @@ def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, p
     for proportion in range(len(proportions_standard)):
         numerator = proportions_standard[proportion]
         denominator = max(proportions_extra_hydrogen[proportion], proportions_hydrogen_removed[proportion])
+        log_file.write(f'scoring_function {aa_one_letter_codes[proportion]}:')
+        log_file.write(f'numerator: {numerator}')
+        log_file.write(f'denominator: {denominator}')
         if denominator == 0.0:
             denominator = 1
         score.append(numerator / denominator**parameters_set[4])
+        log_file.write(f'score: {numerator / denominator**parameters_set[4]}')
 
     best_letters_all = dict(zip(aa_one_letter_codes, score))
     max_proportion = max(best_letters_all.values())
@@ -153,6 +159,10 @@ def calculate_priority(simulated_seq, config, best_letters_all, cost_so_far):
     simulated_seq_formula_string = str(simulated_seq.convert_to_molecular_formula())
     heuristic = int(formula_string[1:formula_string.index('H')]) - int(simulated_seq_formula_string[1:simulated_seq_formula_string.index('H')])
     priority = alpha * proportion + (1 - alpha) * heuristic
+    log_file.write(f'priority for queue: {priority}')
+    log_file.write(f'alpha: {alpha}')
+    log_file.write(f'proportion + cost_so_fat: {proportion}')
+    log_file.write(f'heuristic: {heuristic}')
     return priority, simulated_seq_formula_string, proportion
 
 
@@ -165,6 +175,7 @@ def main():
     parameters_set = [0.1, 1e-06, 0.4, 0.4, 0.3]
     parameters_info = f'{simulated_seq}, parameters: {parameters_set}'
     print(parameters_info)
+    log_file.write(parameters_info)
     q = Queue()
     for i in range(110):
         print('queue:', q)
@@ -172,9 +183,11 @@ def main():
             considered_state = q.dequeue()
             simulated_seq = considered_state.seq
             print('simulated_seq:', simulated_seq)
+            log_file.write(f'simulated_seq: {simulated_seq}')
             cost_so_far = considered_state.cost_so_far
         best_letters, best_letters_all = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
         print('best_letters:', best_letters)
+        log_file.write(f'best_letters: {best_letters_all}')
         exp_spectrum.normalize(1000.0)
         # next_steps = [simulated_seq + letter[0] for letter in best_letters]
         # print(next_steps)
@@ -216,3 +229,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    log_file.close()

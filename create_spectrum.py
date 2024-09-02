@@ -14,6 +14,7 @@ import csv
 import itertools
 
 log_file = open('parameters.txt', 'w')
+log_lines = []
 
 
 def generate_prefixes_and_suffixes(seq):
@@ -74,10 +75,14 @@ def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, p
         log_file.write(f'scoring_function {aa_one_letter_codes[proportion]}:\n')
         log_file.write(f'numerator: {numerator}\n')
         log_file.write(f'denominator: {denominator}\n')
+        log_lines[-1].append(aa_one_letter_codes[proportion])
+        log_lines[-1].append(numerator)
+        log_lines[-1].append(denominator)
         if denominator == 0.0:
             denominator = 1
         score.append(numerator / denominator**parameters_set[4])
         log_file.write(f'score: {numerator / denominator**parameters_set[4]}\n')
+        log_lines[-1].append(numerator / denominator**parameters_set[4])
 
     best_letters_all = dict(zip(aa_one_letter_codes, score))
     max_proportion = max(best_letters_all.values())
@@ -163,6 +168,10 @@ def calculate_priority(simulated_seq, config, best_letters_all, cost_so_far):
     log_file.write(f'alpha: {alpha}\n')
     log_file.write(f'proportion + cost_so_fat: {proportion}\n')
     log_file.write(f'heuristic: {heuristic}\n')
+    log_lines[-1].append(priority)
+    log_lines[-1].append(alpha)
+    log_lines[-1].append(proportion)
+    log_lines[-1].append(heuristic)
     return priority, simulated_seq_formula_string, proportion
 
 
@@ -176,6 +185,7 @@ def main():
     parameters_info = f'{simulated_seq}, parameters: {parameters_set}'
     print(parameters_info)
     log_file.write(f'{parameters_info}\n')
+    log_lines.append(parameters_info)
     q = Queue()
     for i in range(110):
         print('queue:', q)
@@ -185,9 +195,14 @@ def main():
             print('simulated_seq:', simulated_seq)
             log_file.write(f'simulated_seq: {simulated_seq}\n')
             cost_so_far = considered_state.cost_so_far
+        log_lines.append([simulated_seq])
+        if simulated_seq.seq[-1] != config['fasta'][i+3]:
+            print(f'not matching model sequence {simulated_seq} → {config["fasta"][:i+3+1]}')
+            break
         best_letters, best_letters_all = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
         print('best_letters:', best_letters)
         log_file.write(f'best_letters: {best_letters_all}\n')
+        log_lines[-1].append(best_letters)
         exp_spectrum.normalize(1000.0)
         # next_steps = [simulated_seq + letter[0] for letter in best_letters]
         # print(next_steps)
@@ -230,3 +245,6 @@ def main():
 if __name__ == "__main__":
     main()
     log_file.close()
+    with open('parameters.csv', 'w') as lf:
+        writer = csv.writer(lf, dialect='excel')
+        writer.writerows(log_lines)

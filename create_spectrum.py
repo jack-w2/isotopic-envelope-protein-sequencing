@@ -178,13 +178,14 @@ def main():
     log_file.write(f'{parameters_info}\n')
     q = Queue()
     for i in range(110):
-        print('queue:', q)
+        #print('queue:', q)
         if q:
             considered_state = q.dequeue()
             simulated_seq = considered_state.seq
-            print('simulated_seq:', simulated_seq)
             log_file.write(f'simulated_seq: {simulated_seq}\n')
             cost_so_far = considered_state.cost_so_far
+        simulated_seq = Seq(config['fasta'][:i], 'pref')
+        print('simulated_seq:', simulated_seq)
         best_letters, best_letters_all = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
         print('best_letters:', best_letters)
         log_file.write(f'best_letters: {best_letters_all}\n')

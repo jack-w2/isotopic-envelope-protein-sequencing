@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import csv
 import itertools
 
-log_lines = []
+log_lines = dict()
 
 
 def generate_prefixes_and_suffixes(seq):
@@ -71,13 +71,10 @@ def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, p
     for proportion in range(len(proportions_standard)):
         numerator = proportions_standard[proportion]
         denominator = max(proportions_extra_hydrogen[proportion], proportions_hydrogen_removed[proportion])
-        log_lines[-1].append(aa_one_letter_codes[proportion])
-        log_lines[-1].append(numerator)
-        log_lines[-1].append(denominator)
         if denominator == 0.0:
             denominator = 1
         score.append(numerator / denominator**parameters_set[4])
-        log_lines[-1].append(numerator / denominator**parameters_set[4])
+        log_lines[seqs_to_test[proportion].seq] = [numerator, denominator, numerator / denominator**parameters_set[4]]
 
     best_letters_all = dict(zip(aa_one_letter_codes, score))
     max_proportion = max(best_letters_all.values())
@@ -159,10 +156,7 @@ def calculate_priority(simulated_seq, config, best_letters_all, cost_so_far):
     simulated_seq_formula_string = str(simulated_seq.convert_to_molecular_formula())
     heuristic = int(formula_string[1:formula_string.index('H')]) - int(simulated_seq_formula_string[1:simulated_seq_formula_string.index('H')])
     priority = alpha * proportion + (1 - alpha) * heuristic
-    log_lines[-1].append(priority)
-    log_lines[-1].append(alpha)
-    log_lines[-1].append(proportion)
-    log_lines[-1].append(heuristic)
+    log_lines[simulated_seq.seq].extend([priority, alpha, proportion, heuristic])
     return priority, simulated_seq_formula_string, proportion
 
 
@@ -175,7 +169,6 @@ def main():
     parameters_set = [0.1, 1e-06, 0.4, 0.4, 0.3]
     parameters_info = f'{simulated_seq}, parameters: {parameters_set}'
     print(parameters_info)
-    log_lines.append(parameters_info)
     q = Queue()
     for i in range(110):
         #print('queue:', q)
@@ -185,12 +178,11 @@ def main():
             cost_so_far = considered_state.cost_so_far
         simulated_seq = Seq(config['fasta'][:i], 'pref')
         print('simulated_seq:', simulated_seq)
-        print('expected letter:', config['fasta'][i])
-        log_lines.append([simulated_seq])
+        expected_letter = config['fasta'][i]
+        print('expected letter:', expected_letter)
         best_letters, best_letters_all = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
         print('best_letters:', best_letters)
         print()
-        log_lines[-1].append(best_letters)
         if config['fasta'][i] not in best_letters:
             break
         exp_spectrum.normalize(1000.0)
@@ -230,10 +222,19 @@ def main():
                 possible_simulated_seq.seq = simulated_seq.seq + letter
             priority, simulated_seq_formula_string, cost_so_far = calculate_priority(possible_simulated_seq, config, best_letters_all, cost_so_far)
             q.enqueue(QueueItem(cost_so_far + priority, possible_simulated_seq, simulated_seq_formula_string, cost_so_far))
+            if possible_simulated_seq.seq == config['fasta'][:i+1]:
+                log_lines[possible_simulated_seq.seq].append(True)
 
 
 if __name__ == "__main__":
     main()
+    headers = ['seq', 'numerator', 'denominator', 'score', 'priority', 'alpha', 'proportion', 'heuristic', 'is_correct_option']
     with open('parameters.csv', 'w') as lf:
         writer = csv.writer(lf, dialect='excel')
-        writer.writerows(log_lines)
+        writer.writerow(headers)
+        for key, val in log_lines.items():
+            values_count = len(val)
+            if values_count == 7:
+                writer.writerow([key, *val, False])
+            elif values_count == 8:
+                writer.writerow([key, *val])

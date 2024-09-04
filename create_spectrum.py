@@ -185,13 +185,14 @@ def main():
             cost_so_far = considered_state.cost_so_far
         simulated_seq = Seq(config['fasta'][:i], 'pref')
         print('simulated_seq:', simulated_seq)
+        print('expected letter:', config['fasta'][i])
         log_lines.append([simulated_seq])
-        if simulated_seq.seq[-1] != config['fasta'][i+3]:
-            print(f'not matching model sequence {simulated_seq} → {config["fasta"][:i+3+1]}')
-            break
         best_letters, best_letters_all = find_next_best_letter(simulated_seq, exp_spectrum, parameters_set)
         print('best_letters:', best_letters)
+        print()
         log_lines[-1].append(best_letters)
+        if config['fasta'][i] not in best_letters:
+            break
         exp_spectrum.normalize(1000.0)
         # next_steps = [simulated_seq + letter[0] for letter in best_letters]
         # print(next_steps)

@@ -92,10 +92,8 @@ def find_next_best_letter(seq_to_test, experimental_spectrum, parameters_set, aa
     return best_letters
 
 
-def create_spectrum():
+def create_spectrum(config):
     """Create experimental spectrum."""
-    config = load_config_file('config.toml')
-
     seq = config['fasta']
     seqs = generate_prefixes_and_suffixes(seq)
 
@@ -144,7 +142,8 @@ def get_replacements_dict(replacements_file='amino_acids_replacements.csv'):
 
 
 def main():
-    exp_spectrum = create_spectrum()
+    config = load_config_file('config.toml')
+    exp_spectrum = create_spectrum(config)
     exp_spectrum.normalize(target_value=100000.0)
     simulated_seq = Seq('MALW', 'pref')
     parameters_set = [0.1, 1e-06, 0.4, 0.4, 0.3]

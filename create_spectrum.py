@@ -12,6 +12,7 @@ except ModuleNotFoundError:
 import matplotlib.pyplot as plt
 import csv
 import itertools
+import argparse
 
 log_lines = dict()
 
@@ -161,6 +162,11 @@ def calculate_priority(simulated_seq, config, best_letters_all, cost_so_far):
 
 def main():
     config = load_config_file('config.toml')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-f', '--fasta', type=str, help='Fasta string for experimental spectrum (simulated_seq).', default=None)
+    args = parser.parse_args()
+    if args.fasta is not None:
+        config['fasta'] = args.fasta
     exp_spectrum = create_spectrum(config)
     exp_spectrum.normalize(target_value=100000.0)
     simulated_seq = Seq('MALW', 'pref')

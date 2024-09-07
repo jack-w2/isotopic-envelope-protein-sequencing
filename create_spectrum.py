@@ -94,7 +94,6 @@ def find_next_best_letter(seq_to_test, experimental_spectrum, parameters_set, aa
 
 def create_spectrum(config):
     """Create experimental spectrum."""
-    config = load_config_file('config.toml')
     seq = config['fasta']
     seqs = generate_prefixes_and_suffixes(seq)
 

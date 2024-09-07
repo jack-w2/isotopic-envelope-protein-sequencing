@@ -164,6 +164,7 @@ def main():
     config = load_config_file('config.toml')
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--fasta', type=str, help='Fasta string for experimental spectrum (simulated_seq).', default=None)
+    parser.add_argument('-l', '--logfile', type=str, help='Filename for logfile (default parameters.csv).', default='parameters.csv')
     args = parser.parse_args()
     if args.fasta is not None:
         config['fasta'] = args.fasta
@@ -230,11 +231,9 @@ def main():
             if possible_simulated_seq.seq == config['fasta'][:i+1]:
                 log_lines[possible_simulated_seq.seq].append(True)
 
-
-if __name__ == "__main__":
-    main()
     headers = ['seq', 'numerator', 'denominator', 'score', 'priority', 'alpha', 'proportion', 'heuristic', 'is_correct_option']
-    with open('parameters.csv', 'w') as lf:
+    logfile_name = args.logfile
+    with open(logfile_name, 'w') as lf:
         writer = csv.writer(lf, dialect='excel')
         writer.writerow(headers)
         for key, val in log_lines.items():
@@ -243,3 +242,8 @@ if __name__ == "__main__":
                 writer.writerow([key, *val, False])
             elif values_count == 8:
                 writer.writerow([key, *val])
+
+
+
+if __name__ == "__main__":
+    main()

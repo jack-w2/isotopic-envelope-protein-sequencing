@@ -12,7 +12,7 @@ for log in logs:
         reader = csv.reader(f, dialect='excel')
         next(reader, None)
         for row in reader:
-            x.append(row[1:-1])
+            x.append(map(float,row[1:-1]))
             y.append(row[-1])
 print(x)
 y = [1 if i == 'True' else 0 for i in y]
@@ -20,8 +20,19 @@ print(y)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 
-reg = linear_model.LinearRegression()
-import numpy as np
-reg.fit(np.array(x_train, dtype=np.float64), y_train)
+#reg = linear_model.LinearRegression()
+#import numpy as np
+#reg.fit(np.array(x_train, dtype=np.float64), y_train)
 
-print(reg.coef_)
+#print(reg.coef_)
+#print(reg)
+import statsmodels.api as sm
+import pandas as pd
+
+x_train = pd.DataFrame(x_train)
+y_train = pd.Series(y_train)
+sm.add_constant(x_train)
+mod = sm.OLS(y_train, x_train)
+res = mod.fit()
+print(res.summary())
+

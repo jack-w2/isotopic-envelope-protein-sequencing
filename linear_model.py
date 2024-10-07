@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 
 logs = list(Path('tests/logs').glob('*'))
 
+seqs = []
 x = []
 y = []
 for log in logs:
@@ -13,10 +14,16 @@ for log in logs:
         reader = csv.reader(f, dialect='excel')
         next(reader, None)
         for row in reader:
-            x.append(list(map(float,row[1:-1])))
+            seqs.append(row[0])
+            x.append(map(float,row[1:-1]))
             y.append(row[-1])
+
+seqs = pd.Series(seqs)
+x = pd.DataFrame(x)
+y = pd.Series(1 if i == 'True' else 0 for i in y)
+
+print(seqs)
 print(x)
-y = [1 if i == 'True' else 0 for i in y]
 print(y)
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)

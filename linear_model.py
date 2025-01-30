@@ -4,7 +4,7 @@ import statsmodels.api as sm
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 
-logs = list(Path('tests/logs').glob('*'))
+logs = list(Path('tests/logs_25').glob('*'))
 
 seqs = []
 x = []

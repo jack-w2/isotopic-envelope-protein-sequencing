@@ -9,10 +9,11 @@ def prepare_proteins_list(file_path):
         return [(protein[0], protein[1].replace('I', 'L')) for protein in SimpleFastaParser(handle)]
 
 def launcher(protein):
+    logs_directory = 'logs_25_params_from_linear_model'
     logfile_name = f'{protein[0].split("|")[1]}.csv'
     print(logfile_name)
-    Path('tests/logs').mkdir(exist_ok=True)
-    os.system(f'python create_spectrum.py -f {protein[1]} -l tests/logs/{logfile_name}')
+    Path(f'tests/{logs_directory}').mkdir(exist_ok=True)
+    os.system(f'python create_spectrum.py -f {protein[1]} -l tests/{logs_directory}/{logfile_name}')
 
 def main():
     proteins = prepare_proteins_list('tests/proteins.fasta')

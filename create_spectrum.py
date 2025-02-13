@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 import csv
 import itertools
 import argparse
+import numpy as np
 
 log_lines = dict()
 
@@ -70,12 +71,13 @@ def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, p
 
     score = []
     for proportion in range(len(proportions_standard)):
-        numerator = proportions_standard[proportion]
-        denominator = max(proportions_extra_hydrogen[proportion], proportions_hydrogen_removed[proportion])
+        numerator = proportions_standard[proportion] * parameters_set[5]
+        denominator = max(proportions_extra_hydrogen[proportion], proportions_hydrogen_removed[proportion]) * parameters_set[6]
         if denominator == 0.0:
             denominator = 1
-        score.append(numerator / denominator**parameters_set[4])
-        log_lines[seqs_to_test[proportion].seq] = [numerator, denominator, numerator / denominator**parameters_set[4]]
+        single_score = np.sign(numerator * parameters_set[7] / denominator) * (np.abs(numerator * parameters_set[7] / denominator)) ** parameters_set[4]
+        score.append(single_score)
+        log_lines[seqs_to_test[proportion].seq] = [numerator, denominator, single_score]
 
     best_letters_all = dict(zip(aa_one_letter_codes, score))
     max_proportion = max(best_letters_all.values())
@@ -151,7 +153,7 @@ def calculate_priority(simulated_seq, config, best_letters_all, cost_so_far):
     Uses alpha factor defined in the config file to balance the proportion of each component.
     """
     alpha = config['heuristic_factor']
-    proportion = best_letters_all[simulated_seq.seq[-1]] + cost_so_far
+    proportion = (best_letters_all[simulated_seq.seq[-1]] + cost_so_far) * config['params_from_linear_model']['proportion']
     formula_string = str(Seq(config['fasta'], 'full').convert_to_molecular_formula())
     simulated_seq_formula_string = str(simulated_seq.convert_to_molecular_formula())
     heuristic = int(formula_string[1:formula_string.index('H')]) - int(simulated_seq_formula_string[1:simulated_seq_formula_string.index('H')])
@@ -173,10 +175,15 @@ def main():
     simulated_seq = Seq('MALW', 'pref')
     cost_so_far = 0
     parameters_set = [0.1, 1e-06, 0.4, 0.4, 0.3]
+    # add params from linear model
+    parameters_set.extend([config['params_from_linear_model']['numerator'], config['params_from_linear_model']['denominator'], config['params_from_linear_model']['score']])
+
     parameters_info = f'{simulated_seq}, parameters: {parameters_set}'
     print(parameters_info)
     q = Queue()
-    for i in range(110):
+    #############
+
+    for i in range(26):
         #print('queue:', q)
         if q:
             considered_state = q.dequeue()

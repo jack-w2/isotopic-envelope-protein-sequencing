@@ -75,7 +75,8 @@ def scoring_function(seqs_to_test, experimental_spectrum, aa_one_letter_codes, p
         denominator = max(proportions_extra_hydrogen[proportion], proportions_hydrogen_removed[proportion]) * parameters_set[6]
         if denominator == 0.0:
             denominator = 1
-        single_score = np.sign(numerator * parameters_set[7] / denominator) * (np.abs(numerator * parameters_set[7] / denominator)) ** parameters_set[4]
+        fraction = numerator * parameters_set[7] / denominator
+        single_score = np.sign(fraction) * (np.abs(fraction)) ** parameters_set[4]
         score.append(single_score)
         log_lines[seqs_to_test[proportion].seq] = [numerator, denominator, single_score]
 
@@ -153,7 +154,7 @@ def calculate_priority(simulated_seq, config, best_letters_all, cost_so_far):
     Uses alpha factor defined in the config file to balance the proportion of each component.
     """
     alpha = config['heuristic_factor']
-    proportion = (best_letters_all[simulated_seq.seq[-1]] + cost_so_far) * config['params_from_linear_model']['proportion']
+    proportion = (best_letters_all[simulated_seq.seq[-1]] + cost_so_far) * config['factors_from_linear_model']['proportion_factor']
     formula_string = str(Seq(config['fasta'], 'full').convert_to_molecular_formula())
     simulated_seq_formula_string = str(simulated_seq.convert_to_molecular_formula())
     heuristic = int(formula_string[1:formula_string.index('H')]) - int(simulated_seq_formula_string[1:simulated_seq_formula_string.index('H')])
@@ -176,12 +177,11 @@ def main():
     cost_so_far = 0
     parameters_set = [0.1, 1e-06, 0.4, 0.4, 0.3]
     # add params from linear model
-    parameters_set.extend([config['params_from_linear_model']['numerator'], config['params_from_linear_model']['denominator'], config['params_from_linear_model']['score']])
+    parameters_set.extend([config['factors_from_linear_model']['numerator_factor'], config['factors_from_linear_model']['denominator_factor'], config['factors_from_linear_model']['score_factor']])
 
     parameters_info = f'{simulated_seq}, parameters: {parameters_set}'
     print(parameters_info)
     q = Queue()
-    #############
 
     for i in range(26):
         #print('queue:', q)

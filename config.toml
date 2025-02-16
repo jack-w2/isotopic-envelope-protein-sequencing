@@ -116,8 +116,8 @@ heuristic_factor = 0.6
 nb_of_chemical_noise_peaks = 100
 chemical_noise_amount = 0.1
 electronic_noise_sd = 0.001
-[params_from_linear_model]
-numerator = -11.9985
-denominator = -89.1873
-score = 124.4301
-proportion = -0.2590
+[factors_from_linear_model]
+numerator_factor = -11.9985
+denominator_factor = -89.1873
+score_factor = 124.4301
+proportion_factor = -0.2590

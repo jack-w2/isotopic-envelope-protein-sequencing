@@ -184,12 +184,12 @@ def main():
     q = Queue()
 
     for i in range(26):
-        #print('queue:', q)
+        print('queue:', q)
         if q:
             considered_state = q.dequeue()
             simulated_seq = considered_state.seq
             cost_so_far = considered_state.cost_so_far
-        simulated_seq = Seq(config['fasta'][:i], 'pref')
+        # simulated_seq = Seq(config['fasta'][:i], 'pref')
         print('simulated_seq:', simulated_seq)
         expected_letter = config['fasta'][i]
         print('expected letter:', expected_letter)

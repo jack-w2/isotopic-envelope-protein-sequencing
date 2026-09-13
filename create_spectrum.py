@@ -3,13 +3,11 @@ from masserstein import Spectrum
 from analyse_spectrum import analyse_spectrum
 from sequence import Seq
 from priority_queue import Queue, QueueItem
-from icecream import ic
 try:
     import tomllib
 except ModuleNotFoundError:
     import tomli as tomllib
 
-import matplotlib.pyplot as plt
 import csv
 import itertools
 import argparse
@@ -168,12 +166,14 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--fasta', type=str, help='Fasta string for experimental spectrum (simulated_seq).', default=None)
     parser.add_argument('-l', '--logfile', type=str, help='Filename for logfile (default parameters.csv).', default='parameters.csv')
+    parser.add_argument('-T', '--budget', type=int, default=110, help='Iteration budget T (default 110, as in the autonomous evaluation).')
+    parser.add_argument('--teacher-force', action='store_true', help='Force the true prefix at every step (calibration regime).')
     args = parser.parse_args()
     if args.fasta is not None:
         config['fasta'] = args.fasta
     exp_spectrum = create_spectrum(config)
     exp_spectrum.normalize(target_value=100000.0)
-    simulated_seq = Seq('MALW', 'pref')
+    simulated_seq = Seq('', 'pref')
     cost_so_far = 0
     parameters_set = [0.1, 1e-06, 0.4, 0.4, 0.3]
     # add params from linear model
@@ -183,13 +183,16 @@ def main():
     print(parameters_info)
     q = Queue()
 
-    for i in range(26):
+    for i in range(args.budget):
         print('queue:', q)
         if q:
             considered_state = q.dequeue()
             simulated_seq = considered_state.seq
             cost_so_far = considered_state.cost_so_far
-        # simulated_seq = Seq(config['fasta'][:i], 'pref')
+        if args.teacher_force:
+            simulated_seq = Seq(config['fasta'][:i], 'pref')
+        if i >= len(config['fasta']):
+            break
         print('simulated_seq:', simulated_seq)
         expected_letter = config['fasta'][i]
         print('expected letter:', expected_letter)

@@ -1,5 +1,4 @@
 import csv
-from icecream import ic
 from masserstein import estimate_proportions, Spectrum
 
 
